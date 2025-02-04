@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/*
+black:#0D141C
+orange: #D64C31
+blue: #8fb5ca
+green: #486B4A
+white: #FFFAFA
+*/
+
 .app{
   /* background-color: '#FFFAFA'; */
   /* background-color: black; */
@@ -29,12 +37,15 @@ nav {
 }
 
 /*#endregion */
+.bg-img {
+  color: 
+}
 
 .home-page{
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* background-image: url("./assets/webCover.png"); */
+  color: #0D141C;
 }
 
 
