@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+.app{
+  /* background-color: '#FFFAFA'; */
+  /* background-color: black; */
+}
+
+.home-page{
+  height: 100vh;
+  background-image: url("./assets/webCover.png");
+}
+
+.logo{
+  width: 172px;
+  height: auto;
+}
+
+.left-nav .right-nav{
+}
+
+.nav-item{
+  padding-right: 50px;
+}
+
+.title-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50em;
+  height: 18em;
+  margin-top: -9em;
+  margin-left: -25em;
+
+}
+
+.title{
+  font-size: 104px;
+  font-weight: 700;
+  letter-spacing: -8px;
+  text-align: center;
+}
