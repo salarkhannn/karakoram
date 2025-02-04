@@ -39,3 +39,18 @@
   letter-spacing: -8px;
   text-align: center;
 }
+
+/*#region Help*/
+.help-title{
+  font-size: 60px;
+}
+.help-title2{
+  font-size: 48px;
+}
+.help-title3{
+  font-size: 36px;
+}
+.faq-question{
+  font-weight: 700;
+}
+/*#endregion Help*/
