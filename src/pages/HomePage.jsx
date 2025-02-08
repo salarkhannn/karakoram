@@ -9,7 +9,7 @@ export default function HomePage() {
                 className="bg-img absolute inset-0 bg-cover bg-center bg-no-repeat -z-10"
                 style={{ backgroundImage: `url(${bgImg})` }}
             ></div>
-            <Navbar />
+            <Navbar className="bg-transparent"/>
             <div className="title-container flex flex-col justify-center items-center flex-grow">
                 <p className="title">conquer</p>
                 <p className="title">new heights</p>

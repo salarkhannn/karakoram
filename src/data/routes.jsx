@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
 import Help from "../pages/Help";
-import Account from "../pages/Account";
 import Cart from "../pages/Cart";
 import HomePage from "../pages/homePage";
-import Man from "../pages/Man";
-import Woman from "../pages/Woman";
+import Shop from "../pages/Shop";
 import Search from "../pages/Search";
+import Product from "../pages/Product";
+
+import top from "../productData/hoodies";
+import About from "../pages/About";
 
 const router = createBrowserRouter([
     {
@@ -22,16 +23,20 @@ const router = createBrowserRouter([
       element: <Cart />
     },
     {
-        path: 'Man',
-        element: <Man />
+      path: '/shop',
+      element: <Shop />
     },
     {
-        path: 'Woman',
-        element: <Woman />
+      path: '/search',
+      element: <Search />
     },
     {
-        path: 'Search',
-        element: <Search />
+      path: '/product/:id',
+      element: <Product/>
+    },
+    {
+      path: '/about',
+      element: <About />
     }
   ])
 

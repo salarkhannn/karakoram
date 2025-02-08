@@ -14,6 +14,15 @@ white: #FFFAFA
 }
 
 /*#region Navbar*/
+
+.nav-container {
+  position: sticky;
+  top: 0;
+  background: white; /* Ensure navbar remains visible */
+  z-index: 50; /* Make sure it stays above other elements */
+}
+
+
 nav {
   position: sticky;
   top: 0;
@@ -34,6 +43,13 @@ nav {
 
 .nav-item{
   padding-right: 50px;
+}
+
+.search-container{
+  height: 200px;
+  width: 100vw;
+  background-color: red;
+  /* position: absolute; */
 }
 
 /*#endregion */
@@ -77,6 +93,7 @@ nav {
 /*#endregion */
 
 /*#region Help*/
+
 .help {
   max-width: fit-content;
   margin-top: 100px;
@@ -98,3 +115,32 @@ nav {
   font-weight: 700;
 }
 /*#endregion Help*/
+
+/*#region Search*/
+
+
+/*endregion */
+
+/*#region products*/
+
+.product-list{
+  display: grid;
+}
+
+.product{
+  cursor: pointer;
+}
+
+.product-image{
+  width: 450px;
+  height: auto;
+}
+
+.cart-button{
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  padding: 10px;
+}
+
+/*#endregion*/
