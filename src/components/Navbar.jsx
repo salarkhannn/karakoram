@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import logo from '../assets/logo.png';
 import { Link } from "react-router-dom";
+import { useSearch } from './SearchContext';
 
 export default function Navbar() {
+    const { showResults } = useSearch();
     const [search, setSearch] = useState(false);
     const searchRef = useRef(null);
     const searchButtonRef = useRef(null);
@@ -33,6 +35,7 @@ export default function Navbar() {
 
     const handleChange = (event) => {
         setSearchInput(event.target.value);
+        showResults(event.target.value);
     }
 
     const handleSubmit = (event) => {

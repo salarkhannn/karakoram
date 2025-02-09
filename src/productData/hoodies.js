@@ -1,42 +1,42 @@
 const top = [
     {
         id: "1",
-        name: "greenHoodie",
+        name: "Green Hoodie",
         image: "/hoodies/hoodieGreen.png",
         price: "100",
         description: "green varsity zipper hoodie"
     },
     {
         id: "2",
-        name: "blackHoodie",
+        name: "Black Hoodie",
         image: "/hoodies/hoodieBlack.png",
         price: "120",
         description: "black varsity zipper hoodie"
     },
     {
         id: "3",
-        name: "brownHoodie",
+        name: "Brown Hoodie",
         image: "/hoodies/hoodieBrown.png",
         price: "150",
         description: "brown varsity zipper hoodie"
     },
     {
         id: "4",
-        name: "greenHoodie",
+        name: "Green Hoodie",
         image: "/hoodies/hoodieGreen.png",
         price: "100",
         description: "green varsity zipper hoodie"
     },
     {
         id: "5",
-        name: "blackHoodie",
+        name: "Black Hoodie",
         image: "/hoodies/hoodieBlack.png",
         price: "120",
         description: "black varsity zipper hoodie"
     },
     {
         id: "6",
-        name: "brownHoodie",
+        name: "Brown Hoodie",
         image: "/hoodies/hoodieBrown.png",
         price: "150",
         description: "brown varsity zipper hoodie"

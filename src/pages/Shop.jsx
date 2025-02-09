@@ -4,21 +4,37 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../components/CartContext";
+import { useSearch } from "../components/SearchContext";
 
 export default function Shop(){
     const { addToCart } = useContext(CartContext);
+    const { searchQuery } = useSearch();
     const [itemsToShow, setItemsToShow] = useState(top);
 
-    const showResults = () => {
-        const newItems = [];
-        itemsToShow.map((item) => {
-
-        })
-    }
+    // const showResults = ( search ) => {
+    //     console.log("Search passed: ", search);
+    //     console.log("Datatype of search passed in shop: ", typeof(search))
+    //     const newItems = [];
+    //     itemsToShow.map((item) => {
+    //         console.log("Search matched: ", item.name.includes(search))
+    //         if (item.name.includes(search)){
+    //             newItems.push(item);
+    //         }
+    //     })
+    //     setItemsToShow(newItems);
+    //     console.log("Items to show: ", itemsToShow);
+    // }
 
     useEffect(() => {
-
-    })
+        if (searchQuery) {
+            const filteredItems = top.filter((item) =>
+                item.name.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+            setItemsToShow(filteredItems);
+        } else {
+            setItemsToShow(top);
+        }
+    }, [searchQuery]);
 
     return (
         <>
