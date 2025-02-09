@@ -5,14 +5,22 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
     const [search, setSearch] = useState(false);
     const searchRef = useRef(null);
+    const searchButtonRef = useRef(null);
+    const [searchInput, setSearchInput] = useState("");
 
-    const toggleVisibility = () => {
-        setSearch(prev => !prev);
+    const toggleVisibility = (event) => {
+        event.stopPropagation();
+        setSearch(!search);
     };
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (searchRef.current && !searchRef.current.contains(event.target)) {
+            if (
+                searchRef.current &&
+                !searchRef.current.contains(event.target) &&
+                searchButtonRef.current &&
+                !searchButtonRef.current.contains(event.target)
+            ) {
                 setSearch(false);
             }
         };
@@ -22,6 +30,15 @@ export default function Navbar() {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    const handleChange = (event) => {
+        setSearchInput(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("Searched for:", searchInput);
+    }
 
     return (
         <div className='nav-container relative'>
@@ -43,16 +60,19 @@ export default function Navbar() {
                 <ul className="right-nav flex flex-row space-x-6 justify-end">
                     <li className="nav-item"><Link to="/shop">Shop</Link></li>
                     <li className="nav-item"><Link to="/cart">Cart</Link></li>
-                    <li className="nav-item cursor-pointer" onClick={toggleVisibility}>Search</li>
+                    <li ref={searchButtonRef} className="nav-item cursor-pointer" id='searchButton' onClick={toggleVisibility}>Search</li>
+                    {/* <li className="nav-item cursor-pointer">Search</li> */}
                 </ul>
             </nav>
 
             {/* Search Bar Overlay */}
             {search && (
-                <div ref={searchRef} className="absolute top-full left-0 w-full bg-white shadow-lg p-4 border-t z-50">
-                    <form className='search-form flex items-center space-x-2'>
-                        <input type='text' name='search' placeholder='Search' className="border p-2 flex-1" />
-                        <button className='search-button bg-black text-white px-4 py-2'>Search</button>
+                <div ref={searchRef} className="search-container absolute top-full left-0 w-full bg-white shadow-lg p-4 border-t z-50">
+                    <form className='search-form flex items-center space-x-2' onSubmit={handleSubmit}>
+                        <input onChange={handleChange} value={searchInput} type='text' name='search' placeholder='Search' className="border p-2 flex-1" />
+                        <button className='search-button bg-black text-white px-4 py-2'>
+                            <Link to='/shop'>Search</Link>
+                        </button>
                     </form>
                 </div>
             )}

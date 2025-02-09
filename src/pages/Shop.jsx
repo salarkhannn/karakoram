@@ -2,18 +2,30 @@ import Navbar from "../components/Navbar";
 import top from "../productData/hoodies";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../components/CartContext";
 
 export default function Shop(){
     const { addToCart } = useContext(CartContext);
+    const [itemsToShow, setItemsToShow] = useState(top);
+
+    const showResults = () => {
+        const newItems = [];
+        itemsToShow.map((item) => {
+
+        })
+    }
+
+    useEffect(() => {
+
+    })
 
     return (
         <>
-            <Navbar />
+            <Navbar/>
             <div className="products px-10 py-5">
                 <ul className="product-list grid grid-cols-3 gap-6">
-                    {top.map((product) => (
+                    {itemsToShow.map((product) => (
                         <li key={product.id} className="product border p-4">
                             <Link to={`/product/${product.id}`}>
                                 <div className="image-container w-full flex justify-center">
