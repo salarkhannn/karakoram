@@ -233,9 +233,11 @@ nav {
 /*#region Footer*/
 .footer-container{
   margin-top: auto;
+  background-color: #5a190f;
 }
 
 .footer-link{
+  background-color: #fff8f7;
   padding-right: 50px;
 }
 
@@ -244,6 +246,7 @@ nav {
 /*#region Help*/
 
 .help {
+  font-family: 'Neue';
   max-width: fit-content;
   margin-top: 100px;
   margin-bottom: 100pxs;
@@ -253,15 +256,19 @@ nav {
 
 .help-title{
   font-size: 60px;
+  font-weight: 500;
 }
 .help-title2{
   font-size: 48px;
+  font-weight: 500;
 }
 .help-title3{
   font-size: 36px;
+  font-weight: 500;
 }
 .faq-question{
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 /*#endregion Help*/
 
@@ -301,6 +308,15 @@ nav {
 .cart-button:hover{
   text-decoration: underline;
   /* color: white; */
+}
+
+
+/*#endregion*/
+
+
+/*#region cart*/
+.cart-container {
+  font-family: 'Neue';
 }
 
 

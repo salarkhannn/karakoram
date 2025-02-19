@@ -1,6 +1,7 @@
 const top = [
     {
         id: "1",
+        collection: "KARAKORAM ORIGINALS",
         name: "Green Hoodie",
         image: "/hoodies/hoodieGreen.png",
         price: "100",
@@ -8,6 +9,7 @@ const top = [
     },
     {
         id: "2",
+        collection: "KARAKORAM ORIGINALS",
         name: "Black Hoodie",
         image: "/hoodies/hoodieBlack.png",
         price: "120",
@@ -15,6 +17,7 @@ const top = [
     },
     {
         id: "3",
+        collection: "KARAKORAM ORIGINALS",
         name: "Brown Hoodie",
         image: "/hoodies/hoodieBrown.png",
         price: "150",
@@ -22,6 +25,7 @@ const top = [
     },
     {
         id: "4",
+        collection: "KARAKORAM ORIGINALS",
         name: "Green Hoodie",
         image: "/hoodies/hoodieGreen.png",
         price: "100",
@@ -29,6 +33,7 @@ const top = [
     },
     {
         id: "5",
+        collection: "KARAKORAM ORIGINALS",
         name: "Black Hoodie",
         image: "/hoodies/hoodieBlack.png",
         price: "120",
@@ -36,6 +41,7 @@ const top = [
     },
     {
         id: "6",
+        collection: "KARAKORAM ORIGINALS",
         name: "Brown Hoodie",
         image: "/hoodies/hoodieBrown.png",
         price: "150",

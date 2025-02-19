@@ -16,22 +16,24 @@ export default function Product () {
     return (
         <>
             <Navbar />
-            <div className="product flex flex-row">
-                <div className="product-details">
+            <div className="product flex flex-row w-screen justify-between pl-[12.5vw]">
+                <div className="product-details w-[25vw]">
                     <h1>{product.name}</h1>
                     <p>{product.description}</p>
                 </div>
 
-                <img src={product.image} alt={product.name} className="product-image"/>
+                <div className="product-image-container w-[25vw]">
+                    <img src={product.image} alt={product.name} className="product-image"/>
+                </div>
                 
-                <div className="product-options">
+                <div className="product-options w-[25vw]">
                     {/* <select className="size-dropdown">
                         <option value="S">Small</option>
                         <option value="M">Medium</option>
                         <option value="L">Large</option>
                     </select> */}
                     {/* <SizeDropdown /> */}
-                    <p>{product.price}</p>
+                    <p>${product.price}</p>
                 </div>
             </div>
         </>

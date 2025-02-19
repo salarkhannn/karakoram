@@ -39,8 +39,24 @@ export function CartProvider({ children }){
         setCart([...cart]);
     }
 
-    function removeFromCart(productName) {
-        setCart((prevCart) => prevCart.filter((item) => item.name !== productName));
+    function removeFromCart(product) {
+        if (product.quantity > 1){
+            product.quantity -= 1;
+            console.log(`debug 3: ${product.quantity}`);
+            console.log(`debug 4: ${cart}`);
+            setCart([...cart]);
+            // setCart([...cart, product]);
+        } else {
+            setCart((prevCart) => prevCart.filter((item) => item.name !== product.name));
+        }
+        // if (itemToRemove.quantity > 1){
+        //     itemToRemove.quantity -= 1;
+        //     console.log(`debug 3: ${itemToRemove.quantity}`);
+        //     console.log(`debug 4: ${cart}`);
+        //     setCart([...cart, itemToRemove]);
+        // } else {
+        //     setCart((prevCart) => prevCart.filter((item) => item.name !== itemToRemove.name));
+        // }
     }
 
     return (
