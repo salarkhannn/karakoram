@@ -43,8 +43,10 @@ export default function Navbar() {
         console.log("Searched for:", searchInput);
     }
 
+    const isHomePage = location.pathname === "/";
+
     return (
-        <div className='nav-container relative'>
+        <div className={isHomePage ? "home-nav-container" : "nav-container"}>
             <nav className="grid grid-cols-3 items-center p-7">
                 {/* Left Navigation */}
                 <ul className="left-nav flex flex-row space-x-6 justify-start">
@@ -70,7 +72,7 @@ export default function Navbar() {
 
             {/* Search Bar Overlay */}
             {search && (
-                <div ref={searchRef} className="search-container absolute top-full left-0 w-full bg-white shadow-lg p-4 border-t z-50">
+                <div ref={searchRef} className="search-container absolute top-full left-0 w-full bg-[#FFFAFA] shadow-lg p-4 border-t z-50">
                     <form className='search-form flex items-center space-x-2' onSubmit={handleSubmit}>
                         <input onChange={handleChange} value={searchInput} type='text' name='search' placeholder='Search' className="border p-2 flex-1" />
                         <button className='search-button bg-black text-white px-4 py-2'>

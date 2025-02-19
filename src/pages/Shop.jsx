@@ -39,31 +39,36 @@ export default function Shop(){
     return (
         <>
             <Navbar/>
-            <div className="products px-10 py-5">
-                <ul className="product-list grid grid-cols-3 gap-6">
-                    {itemsToShow.map((product) => (
-                        <li key={product.id} className="product border p-4">
-                            <Link to={`/product/${product.id}`}>
-                                <div className="image-container w-full flex justify-center">
-                                    <img src={product.image} className="product-image h-48 w-48 object-contain"/>
+            <div className="product-page pr-10 pl-10">
+                <div className="products px-10 py-5">
+                    <ul className="product-list grid grid-cols-3 gap-0">
+                        {itemsToShow.map((product) => (
+                            <li key={product.id} className="product border border-transparent hover:border-black p-4">
+                                <Link to={`/product/${product.id}`}>
+                                    <div className="image-container w-full flex justify-center">
+                                        <img src={product.image} className="product-image h-48 w-48 object-contain"/>
+                                    </div>
+                                </Link>
+                                <div className="flex flex-row justify-between">
+                                    <div className="flex flex-col justify-between pt-7">
+                                        <p className="product-name">{product.name}</p>
+                                        <p className="product-price">${product.price}</p>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        name="add to cart" 
+                                        className="cart-button pt-7 mt-7"
+                                        onClick={() => addToCart(product)}
+                                    >
+                                        add to cart
+                                    </button>
                                 </div>
-                                <p className="product-name">{product.name}</p>
-                                <p className="product-price">${product.price}</p>
-                                <p className="product-description">{product.description}</p>
-                            </Link>
-                            <button
-                                type="button"
-                                name="add to cart" 
-                                className="cart-button"
-                                onClick={() => addToCart(product)}
-                            >
-                                add to cart
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <Footer />
             </div>
-            <Footer />
         </>
     )
 }

@@ -1,5 +1,110 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'RadioGroteskBlack';
+  src: url('./assets/RadioGrotesk/PPRadioGrotesk-Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Anton';
+  src: url('./assets/Anton/Anton-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*#region Neue */
+@font-face {
+  font-family: 'Neue';
+  src: url('./assets/NeueMontreal/NeueMontreal-Regular.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Neue';
+  src: url('./assets/NeueMontreal/NeueMontreal-Italic.otf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Neue';
+  src: url('./assets/NeueMontreal/NeueMontreal-Medium.otf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Neue';
+  src: url('./assets/NeueMontreal/NeueMontreal-MediumItalic.otf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Neue';
+  src: url('./assets/NeueMontreal/NeueMontreal-Light.otf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Neue';
+  src: url('./assets/NeueMontreal/NeueMontreal-LightItalic.otf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Neue';
+  src: url('./assets/NeueMontreal/NeueMontreal-Bold.otf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Neue';
+  src: url('./assets/NeueMontreal/NeueMontreal-BoldItalic.otf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+/*#endregion*/
+
+
+/*#region Apple Garamond */
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('./assets/AppleGaramond/AppleGaramond-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('./assets/AppleGaramond/AppleGaramond-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('./assets/AppleGaramond/AppleGaramond-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('./assets/AppleGaramond/AppleGaramond-Light.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('./assets/AppleGaramond/AppleGaramond-LightItalic.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('./assets/AppleGaramond/AppleGaramond.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/*#endregion*/
+
 /*
 black:#0D141C
 orange: #D64C31
@@ -11,14 +116,28 @@ white: #FFFAFA
 .app{
   /* background-color: '#FFFAFA'; */
   /* background-color: black; */
+  background-color: #FFFAFA;
+}
+
+body {
+  background-color: #FFFAFA;
 }
 
 /*#region Navbar*/
 
 .nav-container {
+  display: relative;
   position: sticky;
   top: 0;
-  background: white; /* Ensure navbar remains visible */
+  background: #FFFAFA; /* Ensure navbar remains visible */
+  z-index: 50; /* Make sure it stays above other elements */
+}
+
+.home-nav-container {
+  display: relative;
+  position: sticky;
+  top: 0;
+  background: none; /* Ensure navbar remains visible */
   z-index: 50; /* Make sure it stays above other elements */
 }
 
@@ -29,6 +148,8 @@ nav {
   width: 100%;
   z-index: 100;
   width: 100vw;
+  font-family: 'Neue';
+  font-weight: 400;
 }
 
 .logo{
@@ -43,21 +164,32 @@ nav {
 
 .nav-item{
   padding-right: 50px;
+  transition: text-decoration 0.4s ease-in-out;
+}
+
+.nav-item:hover{
+  text-decoration: underline;
 }
 
 .search-container{
 }
 
 /*#endregion */
-.bg-img {
-  color: 
-}
+
+/*#region Home Page*/
 
 .home-page{
   height: 100vh;
   display: flex;
   flex-direction: column;
   color: #0D141C;
+  /* color: snow; */
+}
+
+.bg-img{
+  background-color: #fff8f7;
+  /* background-color: #FFFAFA; */
+  
 }
 
 
@@ -71,11 +203,32 @@ nav {
 }
 
 .title{
-  font-size: 104px;
-  font-weight: 700;
+  font-family: 'Neue';
+  font-weight: 500;
+  font-size: 150px;
   letter-spacing: -8px;
+  line-height: 140px;
   text-align: center;
+  color: black;
 }
+
+
+
+.latest-link {
+  font-size: 20px;
+  margin-top: 20px;
+  font-family: 'Neue';
+  font-weight: 400;
+  /* background-color: rgba(100, 100, 100, 0.5); */
+  /* color: #FFFAFA; */
+  /* border: 2px solid black; */
+}
+
+.latest-link:hover{
+  text-decoration: underline;
+}
+
+/*#endregion */
 
 /*#region Footer*/
 .footer-container{
@@ -125,7 +278,13 @@ nav {
 
 .product{
   cursor: pointer;
+  font-family: 'Neue';
 }
+
+.product :hover{
+
+}
+
 
 .product-image{
   width: 450px;
@@ -134,9 +293,15 @@ nav {
 
 .cart-button{
   cursor: pointer;
-  color: white;
-  background-color: black;
+  color: black;
   padding: 10px;
+  transition: text-decoration 0.3s ease-in-out;
 }
+
+.cart-button:hover{
+  text-decoration: underline;
+  /* color: white; */
+}
+
 
 /*#endregion*/
