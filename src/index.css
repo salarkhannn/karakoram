@@ -120,7 +120,7 @@ white: #FFFAFA
 }
 
 body {
-  background-color: #FFFAFA;
+  background-color: hsl(0, 100%, 99%);
 }
 
 /*#region Navbar*/

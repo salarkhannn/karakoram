@@ -30,7 +30,7 @@ export function CartProvider({ children }){
         const itemToAdd = {...product};
         itemToAdd.quantity = itemToAdd.quantity ? itemToAdd.quantity = 1 : 1;
         itemToAdd.size = size;
-        const existingItem = cart.find((item) => item.id === itemToAdd.id);
+        const existingItem = cart.find((item) => item.id === itemToAdd.id && item.size === itemToAdd.size);
         if (existingItem) {
             existingItem.quantity += itemToAdd.quantity;
         } else {
@@ -46,9 +46,8 @@ export function CartProvider({ children }){
             console.log(`debug 3: ${product.quantity}`);
             console.log(`debug 4: ${cart}`);
             setCart([...cart]);
-            // setCart([...cart, product]);
         } else {
-            setCart((prevCart) => prevCart.filter((item) => item.name !== product.name));
+            setCart((prevCart) => prevCart.filter((item) => item.name !== product.name || item.size !== product.size));
         }
         // if (itemToRemove.quantity > 1){
         //     itemToRemove.quantity -= 1;

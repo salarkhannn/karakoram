@@ -1,43 +1,49 @@
-import Navbar from "../components/Navbar";
-import top from "../productData/hoodies";
-import Footer from "../components/Footer";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { CartContext } from "../components/CartContext";
 import { useSearch } from "../components/SearchContext";
+import top from "../productData/hoodies";
+import Toast from "../components/Toast";
 
-export default function Shop(){
-    // const showResults = ( search ) => {
-    //     console.log("Search passed: ", search);
-    //     console.log("Datatype of search passed in shop: ", typeof(search))
-    //     const newItems = [];
-    //     itemsToShow.map((item) => {
-    //         console.log("Search matched: ", item.name.includes(search))
-    //         if (item.name.includes(search)){
-    //             newItems.push(item);
-    //         }
-    //     })
-    //     setItemsToShow(newItems);
-    //     console.log("Items to show: ", itemsToShow);
-    // }
-    
+export default function Shop() {
     const { addToCart } = useContext(CartContext);
     const { searchQuery } = useSearch();
     const [itemsToShow, setItemsToShow] = useState(top);
+    
+    // State for tracking dropdown visibility and selected size for each product
+    const [openDropdowns, setOpenDropdowns] = useState({});
+    const [selectedSizes, setSelectedSizes] = useState({});
 
+    const [toastMessage, setToastMessage] = useState("");
 
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedSize, setSelectedSize] = useState(null);
-
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
+    // Toggle dropdown for a specific product
+    const toggleDropdown = (id) => {
+        setOpenDropdowns((prev) => ({
+            ...prev,
+            [id]: !prev[id] // Toggle the dropdown for the specific product
+        }));
     };
 
-    const handleSizeSelect = (size) => {
-        setSelectedSize(size);
-        setIsOpen(false);
-        console.log(size);
+    // Handle selecting a size
+    const handleSizeSelect = (size, id) => {
+        setSelectedSizes((prev) => ({
+            ...prev,
+            [id]: size, // Store selected size for specific product
+        }));
+        setOpenDropdowns((prev) => ({
+            ...prev,
+            [id]: false, // Close the dropdown
+        }));
     };
+
+    const handleAddToCart = (product, size) => {
+        addToCart(product, size);
+        setToastMessage(`Product ${product.name} (${size}) added to cart`);
+
+        setTimeout(() => setToastMessage(null), 3000);
+    }
 
     useEffect(() => {
         if (searchQuery) {
@@ -52,7 +58,8 @@ export default function Shop(){
 
     return (
         <div className="shop">
-            <Navbar/>
+            {toastMessage && <Toast message={toastMessage} />}
+            <Navbar />
             {itemsToShow.length === 0 ? (
                 <div className="no-results min-h-screen flex flex-col">
                     <div className="flex-grow flex items-center justify-center">
@@ -61,55 +68,48 @@ export default function Shop(){
                             <p className="text-gray-500 text-[1.5rem] font-[Neue]">Try adjusting your search.</p>
                         </div>
                     </div>
-                <Footer />
-            </div>
+                    <Footer />
+                </div>
             ) : (
-
-                <div className="product-page pr-10 pl-10 min-h-screen flex flex-col">
+                <div className="product-page pr-10 pl-10 min-h-screen flex flex-col mt-10 mb-10">
                     <div className="products px-10 py-5">
-                        <ul className="product-list grid grid-cols-3 gap-0">
+                        <ul className="product-list grid grid-cols-3 gap-y-30">
                             {itemsToShow.map((product) => (
                                 <li key={product.id} className="product border border-transparent hover:border-black p-4 cursor-pointer font-['Neue']">
                                     <Link to={`/product/${product.id}`}>
                                         <div className="image-container w-full flex justify-center">
-                                            <img src={product.image} className="product-image h-auto w-[450px] object-contain"/>
+                                            <img src={product.image} className="product-image h-auto w-[450px] object-contain" />
                                         </div>
                                     </Link>
                                     <div className="flex flex-row justify-between">
-                                        <div className="flex flex-col justify-between pt-7">
-                                            <p className="product-name">{product.name}</p>
-                                            <p className="product-price">${product.price}</p>
+                                        <div className="flex flex-col pt-7">
+                                            <p className="product-name text-[15px]">{product.collection}</p>
+                                            <p className="product-name text-[15px]">{product.name}</p>
+                                            <p className="product-price text-[14px] text-[#2b446e]">${product.price}</p>
                                         </div>
-                                        <div className="flex flex-col justify-between items-center">
+                                        <div className="flex flex-col items-center">
                                             <div className="size-dropdown relative cursor-pointer pt-7">
-                                                <button
-                                                    className="size-button cursor-pointer bg-teal-400 px-4 py-2"
-                                                    onClick={toggleDropdown}
+                                                <select
+                                                    className="size-select cursor-pointer px-3 py-1 text-left text-[15px] appearance-none bg-white border-[0.5px] border-gray-300 text-black font-['Neue']"
+                                                    value={selectedSizes[product.id] || ""}
+                                                    onChange={(e) => handleSizeSelect(e.target.value, product.id)}
                                                 >
-                                                    {selectedSize ? `Size: ${selectedSize}` : 'Select Size'}
-                                                </button>
-
-                                                {isOpen && (
-                                                    <div className="size-options absolute bg-white mt-2 w-full">
-                                                        {["S", "M", "L"].map((size) => (
-                                                            <button
-                                                                key={size}
-                                                                className="size-option block w-full cursor-pointer bg-pink-400 text-center"
-                                                                onClick={() => handleSizeSelect(size)}
-                                                            >
-                                                                {size}
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                )}
+                                                    <option className="font-['Neue'] text-[15px]" value="" disabled>Select Size</option>
+                                                    {["S", "M", "L"].map((size) => (
+                                                        <option className="font-['Neue']" key={size} value={size}>
+                                                            {size}
+                                                        </option>
+                                                    ))}
+                                                </select>
                                             </div>
+
                                             <button
                                                 type="button"
-                                                name="add to cart" 
-                                                className="cart-button mt-7 cursor-pointer p-[10px] text-black hover:underline"
-                                                onClick={() => addToCart(product, selectedSize)}
+                                                name="add to cart"
+                                                className="cart-button cursor-pointer pt-[5px] text-black hover:underline text-[14px]"
+                                                onClick={() => handleAddToCart(product, selectedSizes[product.id])}
                                             >
-                                                add to cart
+                                                Add to Cart
                                             </button>
                                         </div>
                                     </div>
@@ -121,5 +121,5 @@ export default function Shop(){
                 </div>
             )}
         </div>
-    )
+    );
 }

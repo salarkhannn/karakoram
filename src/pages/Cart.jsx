@@ -37,9 +37,9 @@ export default function Cart(){
                                                 <div>
                                                     <p className="">{item.collection}</p>
                                                     <p className="">{item.name}</p>
-                                                    <p className="">x{item.quantity}</p>
+                                                    <p className="">x {item.quantity}</p>
                                                 </div>
-                                                <p className="">SIZE:</p>
+                                                <p className="">SIZE: {item.size}</p>
                                             </div>
                                         </div>
                                         <div className="flex flex-col justify-between text-left">
