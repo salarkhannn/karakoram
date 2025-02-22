@@ -9,6 +9,7 @@ const hoodies = [
         name: "Green Hoodie",
         images: greenHoodie,
         price: "100",
+        description: "Cotton-blend fleece hoodie",
         qualities: [
             "Embroidered Karakoram Originals logo on chest",
             "Contrast panel detailing on sleeves",
@@ -28,6 +29,7 @@ const hoodies = [
         name: "Black Hoodie",
         images: blackHoodie,
         price: "120",
+        description: "Heavyweight fleece hoodie",
         qualities: [
             "Tonal logo print at chest",
             "Double-layered hood with drawstrings",
@@ -46,6 +48,7 @@ const hoodies = [
         name: "Brown Hoodie",
         images: brownHoodie,
         price: "150",
+        description: "Cotton-blend fleece hoodie",
         qualities: [
             "Embroidered Karakoram Originals logo on chest",
             "Contrast panel detailing on sleeves",

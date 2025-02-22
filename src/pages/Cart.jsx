@@ -32,7 +32,7 @@ export default function Cart(){
                                     <hr className="w-[70vw] opacity-60"/>
                                     <div className="flex flex-row justify-between w-[70vw] pt-10 pb-10">
                                         <div className="flex flex-row">
-                                            <img className="cart-item-image w-[15vw]" src={item.image} alt={item.name} />
+                                            <img className="cart-item-image w-[15vw]" src={item.images[0]} alt={item.name} />
                                             <div className="flex flex-col justify-between ml-10">
                                                 <div>
                                                     <p className="">{item.collection}</p>
