@@ -300,6 +300,9 @@ nav {
   /* color: white; */
 }
 
+.size-button:active .size-options{
+  display: block;
+}
 
 /*#endregion*/
 

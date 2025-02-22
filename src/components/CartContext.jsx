@@ -26,9 +26,10 @@ export function CartProvider({ children }){
     //     }
     // }
 
-    function addToCart(product) {
+    function addToCart(product, size) {
         const itemToAdd = {...product};
         itemToAdd.quantity = itemToAdd.quantity ? itemToAdd.quantity = 1 : 1;
+        itemToAdd.size = size;
         const existingItem = cart.find((item) => item.id === itemToAdd.id);
         if (existingItem) {
             existingItem.quantity += itemToAdd.quantity;

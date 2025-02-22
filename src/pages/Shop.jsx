@@ -7,10 +7,6 @@ import { CartContext } from "../components/CartContext";
 import { useSearch } from "../components/SearchContext";
 
 export default function Shop(){
-    const { addToCart } = useContext(CartContext);
-    const { searchQuery } = useSearch();
-    const [itemsToShow, setItemsToShow] = useState(top);
-
     // const showResults = ( search ) => {
     //     console.log("Search passed: ", search);
     //     console.log("Datatype of search passed in shop: ", typeof(search))
@@ -24,6 +20,24 @@ export default function Shop(){
     //     setItemsToShow(newItems);
     //     console.log("Items to show: ", itemsToShow);
     // }
+    
+    const { addToCart } = useContext(CartContext);
+    const { searchQuery } = useSearch();
+    const [itemsToShow, setItemsToShow] = useState(top);
+
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedSize, setSelectedSize] = useState(null);
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleSizeSelect = (size) => {
+        setSelectedSize(size);
+        setIsOpen(false);
+        console.log(size);
+    };
 
     useEffect(() => {
         if (searchQuery) {
@@ -34,7 +48,6 @@ export default function Shop(){
         } else {
             setItemsToShow(top);
         }
-        console.log(itemsToShow.length);
     }, [searchQuery]);
 
     return (
@@ -67,14 +80,38 @@ export default function Shop(){
                                             <p className="product-name">{product.name}</p>
                                             <p className="product-price">${product.price}</p>
                                         </div>
-                                        <button
-                                            type="button"
-                                            name="add to cart" 
-                                            className="cart-button mt-7 cursor-pointer p-[10px] text-black hover:underline"
-                                            onClick={() => addToCart(product)}
-                                        >
-                                            add to cart
-                                        </button>
+                                        <div className="flex flex-col justify-between items-center">
+                                            <div className="size-dropdown relative cursor-pointer pt-7">
+                                                <button
+                                                    className="size-button cursor-pointer bg-teal-400 px-4 py-2"
+                                                    onClick={toggleDropdown}
+                                                >
+                                                    {selectedSize ? `Size: ${selectedSize}` : 'Select Size'}
+                                                </button>
+
+                                                {isOpen && (
+                                                    <div className="size-options absolute bg-white mt-2 w-full">
+                                                        {["S", "M", "L"].map((size) => (
+                                                            <button
+                                                                key={size}
+                                                                className="size-option block w-full cursor-pointer bg-pink-400 text-center"
+                                                                onClick={() => handleSizeSelect(size)}
+                                                            >
+                                                                {size}
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <button
+                                                type="button"
+                                                name="add to cart" 
+                                                className="cart-button mt-7 cursor-pointer p-[10px] text-black hover:underline"
+                                                onClick={() => addToCart(product, selectedSize)}
+                                            >
+                                                add to cart
+                                            </button>
+                                        </div>
                                     </div>
                                 </li>
                             ))}
