@@ -46,8 +46,8 @@ export default function Navbar() {
     const isHomePage = location.pathname === "/";
 
     return (
-        <div className={isHomePage ? "home-nav-container relative sticky top-0 bg-none z-50" : "nav-container relative sticky top-0 bg-[#FFFAFA] z-50"}>
-            <nav className="grid grid-cols-3 items-center p-7 sticky top-0 w-full z-[100] w-screen font-['Neue'] font-normal">
+        <div className={isHomePage ? "home-nav-container sticky top-0 bg-none z-50" : "nav-container sticky top-0 bg-[#FFFAFA] z-50"}>
+            <nav className="grid grid-cols-3 items-center pt-7 px-[2vw] pb-7 sticky top-0 z-[100] w-screen font-['Neue'] font-normal">
                 {/* Left Navigation */}
                 <ul className="left-nav flex flex-row space-x-6 justify-start left-0">
                     <li className="nav-item pr-[50px] hover:underline"><Link to="/help">Help</Link></li>
@@ -57,7 +57,7 @@ export default function Navbar() {
                 {/* Centered Logo */}
                 <div className="logo-container flex justify-center">
                     <Link to="/">
-                        <img className="logo w-32 flex-grow w-[172px] h-auto" src={logo} alt="Karakoram Logo" />
+                        <img className="logo flex-grow w-[172px] h-auto" src={logo} alt="Karakoram Logo" />
                     </Link>
                 </div>
 

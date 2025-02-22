@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import hoodies from "../productData/clothes";
-import SizeDropdown from "../components/SizeDropdown";
 import { useState } from "react";
 import { useContext } from "react";
 import { CartContext } from "../components/CartContext";
