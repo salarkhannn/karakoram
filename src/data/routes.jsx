@@ -6,7 +6,6 @@ import Shop from "../pages/Shop";
 import Search from "../pages/Search";
 import Product from "../pages/Product";
 
-import top from "../productData/hoodies";
 import About from "../pages/About";
 
 const router = createBrowserRouter([

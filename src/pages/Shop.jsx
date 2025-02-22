@@ -4,13 +4,13 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { CartContext } from "../components/CartContext";
 import { useSearch } from "../components/SearchContext";
-import top from "../productData/hoodies";
+import hoodies from "../productData/clothes";
 import Toast from "../components/Toast";
 
 export default function Shop() {
     const { addToCart } = useContext(CartContext);
     const { searchQuery } = useSearch();
-    const [itemsToShow, setItemsToShow] = useState(top);
+    const [itemsToShow, setItemsToShow] = useState(hoodies);
     
     // State for tracking dropdown visibility and selected size for each product
     const [openDropdowns, setOpenDropdowns] = useState({});
@@ -39,20 +39,24 @@ export default function Shop() {
     };
 
     const handleAddToCart = (product, size) => {
-        addToCart(product, size);
-        setToastMessage(`Product ${product.name} (${size}) added to cart`);
+        if (size){
+            addToCart(product, size);
+            setToastMessage(`Product ${product.name} (${size}) added to cart`);
+        } else {
+            setToastMessage(`Size not selected`);
+        }
 
         setTimeout(() => setToastMessage(null), 3000);
     }
 
     useEffect(() => {
         if (searchQuery) {
-            const filteredItems = top.filter((item) =>
+            const filteredItems = hoodies.filter((item) =>
                 item.name.toLowerCase().includes(searchQuery.toLowerCase())
             );
             setItemsToShow(filteredItems);
         } else {
-            setItemsToShow(top);
+            setItemsToShow(hoodies);
         }
     }, [searchQuery]);
 
@@ -78,7 +82,7 @@ export default function Shop() {
                                 <li key={product.id} className="product border border-transparent hover:border-black p-4 cursor-pointer font-['Neue']">
                                     <Link to={`/product/${product.id}`}>
                                         <div className="image-container w-full flex justify-center">
-                                            <img src={product.image} className="product-image h-auto w-[450px] object-contain" />
+                                            <img src={product.images[0]} className="product-image h-auto w-[450px] object-contain" />
                                         </div>
                                     </Link>
                                     <div className="flex flex-row justify-between">
@@ -90,7 +94,7 @@ export default function Shop() {
                                         <div className="flex flex-col items-center">
                                             <div className="size-dropdown relative cursor-pointer pt-7">
                                                 <select
-                                                    className="size-select cursor-pointer px-3 py-1 text-left text-[15px] appearance-none bg-white border-[0.5px] border-gray-300 text-black font-['Neue']"
+                                                    className="size-select cursor-pointer px-3 py-1 text-left text-[15px] bg-[#fff8f7] border-[0.5px] border-gray-300 text-gray-900 font-['Neue']"
                                                     value={selectedSizes[product.id] || ""}
                                                     onChange={(e) => handleSizeSelect(e.target.value, product.id)}
                                                 >
