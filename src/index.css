@@ -116,7 +116,7 @@ white: #FFFAFA
 .app{
   /* background-color: '#FFFAFA'; */
   /* background-color: black; */
-  background-color: #FFFAFA;
+  /* background-color: #FFFAFA; */
 }
 
 body {
@@ -126,49 +126,49 @@ body {
 /*#region Navbar*/
 
 .nav-container {
-  display: relative;
+  /* display: relative;
   position: sticky;
   top: 0;
-  background: #FFFAFA; /* Ensure navbar remains visible */
-  z-index: 50; /* Make sure it stays above other elements */
+  background: #FFFAFA;
+  z-index: 50; */
 }
 
 .home-nav-container {
-  display: relative;
+  /* display: relative;
   position: sticky;
   top: 0;
-  background: none; /* Ensure navbar remains visible */
-  z-index: 50; /* Make sure it stays above other elements */
+  background: none;
+  z-index: 50; */
 }
 
 
 nav {
-  position: sticky;
+  /* position: sticky;
   top: 0;
   width: 100%;
   z-index: 100;
   width: 100vw;
   font-family: 'Neue';
-  font-weight: 400;
+  font-weight: 400; */
 }
 
 .logo{
-  flex-grow: 1;
+  /* flex-grow: 1;
   width: 172px;
-  height: auto;
+  height: auto; */
 }
 
 .left-nav {
-  left: 0;
+  /* left: 0; */
 }
 
 .nav-item{
-  padding-right: 50px;
+  /* padding-right: 50px; */
   transition: text-decoration 0.4s ease-in-out;
 }
 
 .nav-item:hover{
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 .search-container{
@@ -179,66 +179,60 @@ nav {
 /*#region Home Page*/
 
 .home-page{
-  height: 100vh;
+  /* height: 100vh;
   display: flex;
   flex-direction: column;
-  color: #0D141C;
-  /* color: snow; */
+  color: #0D141C; */
 }
 
 .bg-img{
-  background-color: #fff8f7;
-  /* background-color: #FFFAFA; */
-  
+  /* background-color: #fff8f7;   */
 }
 
 
 .title-container {
-  flex-grow: 1;
+  /* flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: -172px;
+  margin-top: -172px; */
 }
 
 .title{
-  font-family: 'Neue';
-  font-weight: 500;
+  /* font-family: 'Neue'; */
+  /* font-weight: 500; */
   font-size: 150px;
   letter-spacing: -8px;
   line-height: 140px;
-  text-align: center;
-  color: black;
+  /* text-align: center; */
+  /* color: black; */
 }
 
 
 
 .latest-link {
   font-size: 20px;
-  margin-top: 20px;
-  font-family: 'Neue';
-  font-weight: 400;
-  /* background-color: rgba(100, 100, 100, 0.5); */
-  /* color: #FFFAFA; */
-  /* border: 2px solid black; */
+  /* margin-top: 20px; */
+  /* font-family: 'Neue'; */
+  /* font-weight: 400; */
 }
 
 .latest-link:hover{
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 /*#endregion */
 
 /*#region Footer*/
 .footer-container{
-  margin-top: auto;
-  background-color: #5a190f;
+  /* margin-top: auto;
+  background-color: #5a190f; */
 }
 
 .footer-link{
-  background-color: #fff8f7;
-  padding-right: 50px;
+  /* background-color: #fff8f7;
+  padding-right: 50px; */
 }
 
 /*#endregion */
@@ -246,29 +240,25 @@ nav {
 /*#region Help*/
 
 .help {
-  font-family: 'Neue';
+  /* font-family: 'Neue';
   max-width: fit-content;
   margin-top: 100px;
-  margin-bottom: 100pxs;
+  margin-bottom: 100px;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; */
 }
 
 .help-title{
-  font-size: 60px;
-  font-weight: 500;
+  /* font-size: 48px;
+  font-weight: 500; */
 }
 .help-title2{
-  font-size: 48px;
-  font-weight: 500;
-}
-.help-title3{
-  font-size: 36px;
-  font-weight: 500;
+  /* font-size: 36px;
+  font-weight: 500; */
 }
 .faq-question{
-  font-weight: 500;
-  letter-spacing: 1px;
+  /* font-weight: 500;
+  letter-spacing: 1px; */
 }
 /*#endregion Help*/
 
@@ -280,12 +270,12 @@ nav {
 /*#region products*/
 
 .product-list{
-  display: grid;
+  /* display: grid; */
 }
 
 .product{
-  cursor: pointer;
-  font-family: 'Neue';
+  /* cursor: pointer;
+  font-family: 'Neue'; */
 }
 
 .product :hover{
@@ -294,19 +284,19 @@ nav {
 
 
 .product-image{
-  width: 450px;
-  height: auto;
+  /* width: 450px;
+  height: auto; */
 }
 
 .cart-button{
-  cursor: pointer;
+  /* cursor: pointer;
   color: black;
-  padding: 10px;
+  padding: 10px; */
   transition: text-decoration 0.3s ease-in-out;
 }
 
 .cart-button:hover{
-  text-decoration: underline;
+  /* text-decoration: underline; */
   /* color: white; */
 }
 
@@ -316,7 +306,7 @@ nav {
 
 /*#region cart*/
 .cart-container {
-  font-family: 'Neue';
+  /* font-family: 'Neue'; */
 }
 
 

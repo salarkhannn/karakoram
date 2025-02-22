@@ -46,25 +46,25 @@ export default function Navbar() {
     const isHomePage = location.pathname === "/";
 
     return (
-        <div className={isHomePage ? "home-nav-container" : "nav-container"}>
-            <nav className="grid grid-cols-3 items-center p-7">
+        <div className={isHomePage ? "home-nav-container relative sticky top-0 bg-none z-50" : "nav-container relative sticky top-0 bg-[#FFFAFA] z-50"}>
+            <nav className="grid grid-cols-3 items-center p-7 sticky top-0 w-full z-[100] w-screen font-['Neue'] font-normal">
                 {/* Left Navigation */}
-                <ul className="left-nav flex flex-row space-x-6 justify-start">
-                    <li className="nav-item"><Link to="/help">Help</Link></li>
-                    <li className="nav-item"><Link to="/about">About</Link></li>
+                <ul className="left-nav flex flex-row space-x-6 justify-start left-0">
+                    <li className="nav-item pr-[50px] hover:underline"><Link to="/help">Help</Link></li>
+                    <li className="nav-item pr-[50px] hover:underline"><Link to="/about">About</Link></li>
                 </ul>
 
                 {/* Centered Logo */}
                 <div className="logo-container flex justify-center">
                     <Link to="/">
-                        <img className="logo w-32" src={logo} alt="Karakoram Logo" />
+                        <img className="logo w-32 flex-grow w-[172px] h-auto" src={logo} alt="Karakoram Logo" />
                     </Link>
                 </div>
 
                 {/* Right Navigation */}
                 <ul className="right-nav flex flex-row space-x-6 justify-end">
-                    <li className="nav-item"><Link to="/shop">Shop</Link></li>
-                    <li className="nav-item"><Link to="/cart">Cart</Link></li>
+                    <li className="nav-item pr-[50px] hover:underline"><Link to="/shop">Shop</Link></li>
+                    <li className="nav-item pr-[50px] hover:underline"><Link to="/cart">Cart</Link></li>
                     <li ref={searchButtonRef} className="nav-item cursor-pointer" id='searchButton' onClick={toggleVisibility}>Search</li>
                     {/* <li className="nav-item cursor-pointer">Search</li> */}
                 </ul>

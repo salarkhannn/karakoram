@@ -56,10 +56,10 @@ export default function Shop(){
                     <div className="products px-10 py-5">
                         <ul className="product-list grid grid-cols-3 gap-0">
                             {itemsToShow.map((product) => (
-                                <li key={product.id} className="product border border-transparent hover:border-black p-4">
+                                <li key={product.id} className="product border border-transparent hover:border-black p-4 cursor-pointer font-['Neue']">
                                     <Link to={`/product/${product.id}`}>
                                         <div className="image-container w-full flex justify-center">
-                                            <img src={product.image} className="product-image h-48 w-48 object-contain"/>
+                                            <img src={product.image} className="product-image h-auto w-[450px] object-contain"/>
                                         </div>
                                     </Link>
                                     <div className="flex flex-row justify-between">
@@ -70,7 +70,7 @@ export default function Shop(){
                                         <button
                                             type="button"
                                             name="add to cart" 
-                                            className="cart-button pt-7 mt-7"
+                                            className="cart-button mt-7 cursor-pointer p-[10px] text-black hover:underline"
                                             onClick={() => addToCart(product)}
                                         >
                                             add to cart

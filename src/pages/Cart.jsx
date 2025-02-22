@@ -13,7 +13,7 @@ export default function Cart(){
     return (
         <>
             <Navbar />
-            <div className="cart-container">
+            <div className="cart-container font-['Neue']">
                 <h1 className="ml-70">Your Cart</h1>
                 {cart.length === 0 ? (
                     <p className="">Your cart is empty</p>

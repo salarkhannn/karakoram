@@ -2,7 +2,7 @@ import HomePage from "./pages/homePage"
 
 function App() {
   return (
-    <div className="app">
+    <div className="app bg-[#FFFAFA']">
       <HomePage />
     </div>
   )

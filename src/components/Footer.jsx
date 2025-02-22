@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="flex justify-center">
                 <div className="space-x-6">
                     <a 
-                        className="footer-link" 
+                        className="footer-link bg-[#fff8f7] pr-[50px]" 
                         href="https://www.instagram.com/salaaar____/" 
                         target="_blank"
                         rel="noopener noreferrer"
@@ -14,14 +14,14 @@ export default function Footer() {
                         instagram
                     </a>
                     <a 
-                        className="footer-link" 
+                        className="footer-link bg-[#fff8f7] pr-[50px]" 
                         href="https://github.com/salarkhannn/" 
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         github
                     </a>
-                    <Link className="footer-link" to="/help">
+                    <Link className="footer-link bg-[#fff8f7] pr-[50px]" to="/help">
                         help
                     </Link>
                 </div>
