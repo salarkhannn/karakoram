@@ -59,7 +59,7 @@ export default function Product () {
                             <p className="text-[14px] mt-5 mb-5">Supplier Color: {product.supplierColor}</p>
                             <p className="text-[14px]">Material: {product.material}</p>
                             <p className="text-[14px]">Made in: {product.origin}</p>
-                            <p className="text-[14px] mt-5">SKU: {product.sku}</p>
+                            <p className="text-[14px] mt-5 mb-[150px]">SKU: {product.sku}</p>
                         </div>
                     </div>
 
@@ -73,13 +73,13 @@ export default function Product () {
                     </div>
 
                     {/* Right Sticky Section */}
-                    <div className="sticky top-[40%] self-start w-[25vw] max-h-[80vh] overflow-auto">
-                        <div className="pb-50 product-options flex flex-col items-end">
+                    <div className="sticky top-[40%] self-start w-[25vw] max-h-[80vh] mb-100 overflow-auto">
+                        <div className="mb-50 product-options flex flex-col items-end">
                             <div className="items-start">
                                 <p className="text-[13px] mb-5">${product.price} USD</p>
                                 <div className="size-dropdown relative cursor-pointer">
                                     <select
-                                        className="mb-5 flex items-start size-select cursor-pointer px-2 py-[10px] text-[13px] bg-none border-[0.5px] border-gray-300 text-gray-900 font-['Neue']"
+                                        className="mb-5 flex items-start size-select cursor-pointer px-2 py-[10px] pr-[270px] text-[13px] bg-none border-[0.5px] border-gray-300 text-gray-900 font-['Neue']"
                                         value={selectedSize || ""}
                                         onChange={(e) => handleSizeSelect(e.target.value)}
                                     >
@@ -92,7 +92,7 @@ export default function Product () {
                                     </select>
                                 </div>
                                 <button
-                                    className="text-[12px] add-to-cart-button bg-black text-white px-25 py-[10px] cursor-pointer hover:bg-gray-900"
+                                    className="text-[12px] add-to-cart-button bg-black text-white px-[150px] py-[10px] cursor-pointer hover:bg-gray-900 mb-[150px]"
                                     onClick={() => handleAddToCart(product, selectedSize)}
                                 >
                                     ADD TO CART
