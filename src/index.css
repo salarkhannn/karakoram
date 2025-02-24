@@ -205,9 +205,9 @@ nav {
 .title{
   /* font-family: 'Neue'; */
   /* font-weight: 500; */
-  font-size: 150px;
-  letter-spacing: -8px;
-  line-height: 140px;
+  /* font-size: 150px; */
+  /* letter-spacing: -8px; */
+  /* line-height: 140px; */
   /* text-align: center; */
   /* color: black; */
 }
@@ -215,7 +215,7 @@ nav {
 
 
 .latest-link {
-  font-size: 20px;
+  /* font-size: 20px; */
   /* margin-top: 20px; */
   /* font-family: 'Neue'; */
   /* font-weight: 400; */
