@@ -14,7 +14,7 @@ export default function HomePage() {
             ></div>
             <Navbar className="bg-transparent"/>
             <div className="title-container flex flex-col flex-grow justify-center items-center mt-[-172px]">
-                <p className="title font-['Neue'] font-medium text-center text-black text-[200px] xl:text-[200px] xl:tracking-[-12px] xl:leading-[200px] lg:tracking-[-10px] lg:leading-[150px] lg:text-[150px] md:tracking-[-8px] md:leading-[130px] md:text-[130px] sm:text-[100px] sm:tracking-[-7px] sm:leading-[100px]">Conquer<br/>New Heights</p>
+                <p className="title font-['Neue'] font-medium text-center text-black text-[80px] tracking-[-5px] leading-[80px] xl:text-[200px] xl:tracking-[-12px] xl:leading-[200px] lg:tracking-[-10px] lg:leading-[150px] lg:text-[150px] md:tracking-[-8px] md:leading-[130px] md:text-[130px] sm:text-[100px] sm:tracking-[-7px] sm:leading-[100px]">Conquer<br/>New Heights</p>
                 <Link to="/shop" className="latest-link text-[20px] mt-[20px] font-['Neue'] font-normal hover:underline">shop latest collection</Link>
             </div>
         </div>

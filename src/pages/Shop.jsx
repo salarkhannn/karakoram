@@ -75,9 +75,9 @@ export default function Shop() {
                     <Footer />
                 </div>
             ) : (
-                <div className="product-page pr-10 pl-10 min-h-screen flex flex-col mt-10 mb-10">
+                <div className="product-page pr-[0px] pl-[0px] xl:pr-10 xl:pl-10 lg:pr-10 lg:pl-10 md:pr-10 md:pl-10 sm:pr-0 sm:pl-0 min-h-screen flex flex-col mt-10 mb-10">
                     <div className="products px-10 py-5">
-                        <ul className="product-list grid grid-cols-3 gap-y-30 xl:grid-cols-3 xl:gap-y-30 lg:grid-cols-3 lg:gap-y-30 md:grid-cols-2 md:gap-y-30 sm:grid-cols-2 sm:gap-y-30">
+                        <ul className="product-list grid grid-cols-2 gap-y-30 xl:grid-cols-3 xl:gap-y-30 lg:grid-cols-3 lg:gap-y-30 md:grid-cols-2 md:gap-y-30 sm:grid-cols-2 sm:gap-y-30">
                             {itemsToShow.map((product) => (
                                 <li key={product.id} className="product border border-transparent hover:border-black p-4 cursor-pointer font-['Neue']">
                                     <Link to={`/product/${product.id}`}>
@@ -86,15 +86,15 @@ export default function Shop() {
                                         </div>
                                     </Link>
                                     <div className="flex flex-row justify-between">
-                                        <div className="flex flex-col pt-7">
-                                            <p className="product-name xl:text-[15px] lg:text-[12px] md:text-[13px] sm:text-[11px]">{product.collection}</p>
-                                            <p className="product-name xl:text-[15px] lg:text-[12px] md:text-[13px] sm:text-[11px]">{product.name}</p>
-                                            <p className="product-price xl:text-[14px] lg:text-[11px] md:text-[12px] sm:text-[10px] text-[#2b446e]">${product.price}</p>
+                                        <div className="flex flex-col pt-2 xl:pt-7 lg:pt-7 md:pt-7 sm:pt-7">
+                                            <p className="product-name text-[10px] xl:text-[15px] lg:text-[12px] md:text-[13px] sm:text-[11px]">{product.collection}</p>
+                                            <p className="product-name text-[10px] xl:text-[15px] lg:text-[12px] md:text-[13px] sm:text-[11px]">{product.name}</p>
+                                            <p className="product-price text-[9px] xl:text-[14px] lg:text-[11px] md:text-[12px] sm:text-[10px] text-[#2b446e]">${product.price}</p>
                                         </div>
-                                        <div className="flex flex-col items-center">
+                                        <div className="hidden flex-col items-center xl:flex lg:flex md:flex sm:flex">
                                             <div className="size-dropdown relative cursor-pointer pt-7">
                                                 <select
-                                                    className="size-select cursor-pointer bg-[#fff8f7] border-[0.5px] border-gray-300 text-gray-900 font-['Neue'] text-left xl:px-3 xl:py-1 xl:text-[15px] md:px-[9px] md:py-[3px] md:text-[13px] lg:px-[7px] lg:py-[2px] lg:text-[13px] sm:px-[7px] sm:py-[2px] sm:text-[10px]"
+                                                    className="size-select cursor-pointer bg-[#fff8f7] border-[0.5px] border-gray-300 text-gray-900 font-['Neue'] text-left px-[3px] py-[1px] text-[10px] xl:px-3 xl:py-1 xl:text-[15px] md:px-[9px] md:py-[3px] md:text-[13px] lg:px-[7px] lg:py-[2px] lg:text-[13px] sm:px-[7px] sm:py-[2px] sm:text-[10px]"
                                                     value={selectedSizes[product.id] || ""}
                                                     onChange={(e) => handleSizeSelect(e.target.value, product.id)}
                                                 >
@@ -110,7 +110,7 @@ export default function Shop() {
                                             <button
                                                 type="button"
                                                 name="add to cart"
-                                                className="cart-button cursor-pointer pt-[5px] text-black hover:underline text-[14px] xl:text-[13px] lg:text-[12px] md:text-[13px] sm:text-[11px]"
+                                                className="cart-button cursor-pointer pt-[5px] text-black hover:underline text-[10px] xl:text-[13px] lg:text-[12px] md:text-[13px] sm:text-[11px]"
                                                 onClick={() => handleAddToCart(product, selectedSizes[product.id])}
                                             >
                                                 Add to Cart

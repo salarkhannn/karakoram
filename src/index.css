@@ -116,6 +116,10 @@ green: #486B4A
 white: #FFFAFA
 */
 
+.overlay{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .app{
   /* background-color: '#FFFAFA'; */
   /* background-color: black; */
