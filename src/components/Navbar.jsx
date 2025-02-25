@@ -4,6 +4,9 @@ import logoWhite from '../assets/logoWhite.png';
 import { Link } from "react-router-dom";
 import { useSearch } from './SearchContext';
 import hamburgerMenu from '../assets/hamburgerMenuIcon.svg';
+import hamburgerMenuWhite from '../assets/hamburgerMenuIconWhite.svg';
+import searchIcon from '../assets/searchIcon.svg';
+import searchIconWhite from '../assets/searchIconWhite.svg';
 
 export default function Navbar() {
     const { showResults } = useSearch();
@@ -17,12 +20,13 @@ export default function Navbar() {
     
     const [searchInput, setSearchInput] = useState("");
     
-    const isHomePage = location.pathname === "/";
-    const [navbarWhite, setNavbarWhite] = useState(isHomePage);
+    // const isHomePage = location.pathname === "/";
+    const [isHomePage, setIsHomePage] = useState(location.pathname === "/");
 
     const toggleVisibility = (event) => {
         event.stopPropagation();
         setSearch(!search);
+        setIsHomePage(!isHomePage);
     };
 
     
@@ -35,6 +39,7 @@ export default function Navbar() {
                 !searchButtonRef.current.contains(event.target)
             ) {
                 setSearch(false);
+                setIsHomePage(true);
             }
         };
         
@@ -79,8 +84,8 @@ export default function Navbar() {
 
     return (
         <div className={isHomePage ? "home-nav-container sticky top-0 bg-none z-50" : "nav-container sticky top-0 bg-[#fff8f7] z-50"}>
-            <nav className={isHomePage ? "text-[#fff8f7] grid grid-cols-2 items-center pt-7 px-[4vw] pb-7 sticky top-0 z-[100] w-[100vw] font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 sm:pt-9 md:pt-10 lg:pt-12 xl:pt-12 2xl:pt-12" :
-                "text-black grid grid-cols-2 items-center pt-7 px-[4vw] pb-7 sticky top-0 z-[100] w-[100vw] font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 sm:pt-9 md:pt-10 lg:pt-12 xl:pt-12 2xl:pt-12"}
+            <nav className={isHomePage ? "text-[#fff8f7] grid grid-cols-3 items-center pt-7 px-[4vw] pb-7 sticky top-0 z-[100] w-[100vw] font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 sm:pt-9 md:pt-10 lg:pt-12 xl:pt-12 2xl:pt-12" :
+                "text-black grid grid-cols-3 items-center pt-7 px-[4vw] pb-7 sticky top-0 z-[100] w-[100vw] font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 sm:pt-9 md:pt-10 lg:pt-12 xl:pt-12 2xl:pt-12"}
                 >
                 {/* Left Navigation */}
                 <ul className="left-nav hidden flex-row space-x-6 justify-start left-0 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[19px] lg:text-[20px] xl:text-[22px] 2xl:text-[22px]">
@@ -88,8 +93,19 @@ export default function Navbar() {
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/about">About</Link></li>
                 </ul>
 
+                <div className="left-nav block w-[30px] h-[30px] 2xl:hidden xl:hidden lg:hidden md:hidden sm:hidden">
+                    <img
+                        ref={hamburgerButtonRef}
+                        className="w-[25px] h-auto cursor-pointer"
+                        id="hamburger"
+                        onClick={toggleSidebarVisibility}
+                        src={isHomePage ? hamburgerMenuWhite : hamburgerMenu}
+                        alt="Menu"
+                    />
+                </div>
+
                 {/* Centered Logo */}
-                <div className="logo-container flex justify-start  2xl:justify-center xl:justify-center lg:justify-center md:justify-center sm:justify-center">
+                <div className="logo-container flex justify-center  2xl:justify-center xl:justify-center lg:justify-center md:justify-center sm:justify-center">
                     <Link to="/">
                         <img className="logo flex-grow h-auto w-[140px] sm:w-[150px] md:w-[170px] lg:w-[200px] xl:w-[220px] 2xl:w-[230px]" src={isHomePage ? logoWhite : logo} alt="Karakoram Logo" />
                     </Link>
@@ -99,18 +115,18 @@ export default function Navbar() {
                 <ul className="right-nav hidden flex-row space-x-6 justify-end 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[19px] lg:text-[20px] xl:text-[22px] 2xl:text-[22px]">
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/shop">Shop</Link></li>
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/cart">Cart</Link></li>
-                    <li ref={searchButtonRef} className="nav-item cursor-pointer" id='searchButton' onClick={toggleVisibility}>Search</li>
+                    <li ref={searchButtonRef} className="nav-item cursor-pointer hover:underline" id='searchButton' onClick={toggleVisibility}>Search</li>
                     {/* <li className="nav-item cursor-pointer">Search</li> */}
                 </ul>
 
-                <div className="block w-[30px] h-[30px] ml-auto 2xl:hidden xl:hidden lg:hidden md:hidden sm:hidden">
+                <div className="right-nav block justify-end ml-auto w-[30px] h-[30px] 2xl:hidden xl:hidden lg:hidden md:hidden sm:hidden">
                     <img
-                        ref={hamburgerButtonRef}
+                        ref={searchButtonRef}
                         className="w-[25px] h-auto cursor-pointer"
-                        id="hamburger"
-                        onClick={toggleSidebarVisibility}
-                        src={hamburgerMenu}
-                        alt="Menu"
+                        id="searchButton"
+                        onClick={toggleVisibility}
+                        src={isHomePage ? searchIconWhite : searchIcon}
+                        alt="Search Icon"
                     />
                 </div>
 
@@ -119,16 +135,16 @@ export default function Navbar() {
                     <>
                         <div
                             ref={sidebarRef}
-                            className={`z-10 font-['Neue'] fixed top-0 right-0 h-screen w-[50vw] bg-[#FFFAFA] shadow-lg transform transition-transform duration-300 ${
+                            className={`text-black z-10 font-['Neue'] font-medium fixed top-0 left-0 h-screen w-[50vw] bg-[#FFFAFA] shadow-lg transform transition-transform duration-300 ${
                                 sidebar ? "translate-x-0" : "translate-x-full"
                             }`}
                         >
-                            <ul className="font-['Neue'] flex flex-col text-right pr-[30px] pt-7 space-y-4">
-                                <li className="nav-item text-[25px]"><Link to="/help">Help</Link></li>
-                                <li className="nav-item text-[25px]"><Link to="/about">About</Link></li>
-                                <li className="nav-item text-[25px]"><Link to="/shop">Shop</Link></li>
-                                <li className="nav-item text-[25px]"><Link to="/cart">Cart</Link></li>
-                                <li className="nav-item text-[25px]" onClick={toggleSidebarVisibility}>Search</li>
+                            <ul className="font-['Neue'] font-medium flex flex-col text-left pt-10 pl-10 space-y-4">
+                                <li className="nav-item text-[25px] cursor-pointer"><Link to="/">Home</Link></li>
+                                <li className="nav-item text-[25px] cursor-pointer"><Link to="/shop">Shop</Link></li>
+                                <li className="nav-item text-[25px] cursor-pointer"><Link to="/cart">Cart</Link></li>
+                                <li className="nav-item text-[25px] cursor-pointer"><Link to="/help">Help</Link></li>
+                                <li className="nav-item text-[25px] cursor-pointer"><Link to="/about">About</Link></li>
                             </ul>
                         </div>
                         <div className='overlay absolute right-0 top-0 w-screen h-screen bg-black'></div>
@@ -138,10 +154,10 @@ export default function Navbar() {
 
             {/* Search Bar Overlay */}
             {search && (
-                <div ref={searchRef} className="search-container absolute top-full left-0 w-full bg-[#FFFAFA] shadow-lg p-4 border-t z-50">
-                    <form className='search-form flex items-center space-x-2' onSubmit={handleSubmit}>
-                        <input onChange={handleChange} value={searchInput} type='text' name='search' placeholder='Search' className="border p-2 flex-1" />
-                        <button className='search-button bg-black text-white px-4 py-2'>
+                <div ref={searchRef} className="search-container absolute top-full left-0 w-full bg-[#FFFAFA] shadow-lg border-t z-50">
+                    <form className='search-form flex items-center space-x-2 px-[4vw] py-4' onSubmit={handleSubmit}>
+                        <input onChange={handleChange} value={searchInput} type='text' name='search' placeholder='Search' className="border py-3 px-3 flex-1 mr-2" />
+                        <button className='search-button bg-black text-white px-11 py-3'>
                             <Link to='/shop'>Search</Link>
                         </button>
                     </form>
