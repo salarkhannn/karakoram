@@ -61,7 +61,7 @@ export default function Shop() {
     }, [searchQuery]);
 
     return (
-        <div className="shop">
+        <div className="shop bg-[#fff8f7]">
             {toastMessage && <Toast message={toastMessage} />}
             <Navbar />
             {itemsToShow.length === 0 ? (
@@ -75,8 +75,8 @@ export default function Shop() {
                     <Footer />
                 </div>
             ) : (
-                <div className="product-page pr-[0px] pl-[0px] xl:pr-10 xl:pl-10 lg:pr-10 lg:pl-10 md:pr-10 md:pl-10 sm:pr-0 sm:pl-0 min-h-screen flex flex-col mt-10 mb-10">
-                    <div className="products px-10 py-5">
+                <div className="product-page pr-[0px] pl-[0px] xl:pr-10 xl:pl-10 lg:pr-10 lg:pl-10 md:pr-10 md:pl-10 sm:pr-0 sm:pl-0 flex flex-col mt-5">
+                    <div className="products px-5 mb-5">
                         <ul className="product-list grid grid-cols-2 gap-y-30 xl:grid-cols-3 xl:gap-y-30 lg:grid-cols-3 lg:gap-y-30 md:grid-cols-2 md:gap-y-30 sm:grid-cols-2 sm:gap-y-30">
                             {itemsToShow.map((product) => (
                                 <li key={product.id} className="product border border-transparent hover:border-black p-4 cursor-pointer font-['Neue']">

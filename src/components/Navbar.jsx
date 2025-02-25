@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import logo from '../assets/logo.png';
+import logoWhite from '../assets/logoWhite.png';
 import { Link } from "react-router-dom";
 import { useSearch } from './SearchContext';
 import hamburgerMenu from '../assets/hamburgerMenuIcon.svg';
@@ -9,12 +10,15 @@ export default function Navbar() {
     const [search, setSearch] = useState(false);
     const searchRef = useRef(null);
     const searchButtonRef = useRef(null);
-
+    
     const [sidebar, setSidebar] = useState(false);
     const hamburgerButtonRef = useRef(null);
     const sidebarRef = useRef(null);
-
+    
     const [searchInput, setSearchInput] = useState("");
+    
+    const isHomePage = location.pathname === "/";
+    const [navbarWhite, setNavbarWhite] = useState(isHomePage);
 
     const toggleVisibility = (event) => {
         event.stopPropagation();
@@ -72,36 +76,37 @@ export default function Navbar() {
         console.log("Searched for:", searchInput);
     }
 
-    const isHomePage = location.pathname === "/";
 
     return (
-        <div className={isHomePage ? "home-nav-container sticky top-0 bg-none z-50" : "nav-container sticky top-0 bg-[#FFFAFA] z-50"}>
-            <nav className="grid grid-cols-2 items-center pt-7 px-[2vw] pb-7 sticky top-0 z-[100] w-screen font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3">
+        <div className={isHomePage ? "home-nav-container sticky top-0 bg-none z-50" : "nav-container sticky top-0 bg-[#fff8f7] z-50"}>
+            <nav className={isHomePage ? "text-[#fff8f7] grid grid-cols-2 items-center pt-7 px-[4vw] pb-7 sticky top-0 z-[100] w-[100vw] font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 sm:pt-9 md:pt-10 lg:pt-12 xl:pt-12 2xl:pt-12" :
+                "text-black grid grid-cols-2 items-center pt-7 px-[4vw] pb-7 sticky top-0 z-[100] w-[100vw] font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 sm:pt-9 md:pt-10 lg:pt-12 xl:pt-12 2xl:pt-12"}
+                >
                 {/* Left Navigation */}
-                <ul className="left-nav hidden flex-row space-x-6 justify-start left-0 2xl:flex xl:flex lg:flex md:flex sm:flex">
+                <ul className="left-nav hidden flex-row space-x-6 justify-start left-0 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[19px] lg:text-[20px] xl:text-[22px] 2xl:text-[22px]">
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/help">Help</Link></li>
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/about">About</Link></li>
                 </ul>
 
                 {/* Centered Logo */}
-                <div className="logo-container flex justify-center">
+                <div className="logo-container flex justify-start  2xl:justify-center xl:justify-center lg:justify-center md:justify-center sm:justify-center">
                     <Link to="/">
-                        <img className="logo flex-grow w-[172px] h-auto" src={logo} alt="Karakoram Logo" />
+                        <img className="logo flex-grow h-auto w-[140px] sm:w-[150px] md:w-[170px] lg:w-[200px] xl:w-[220px] 2xl:w-[230px]" src={isHomePage ? logoWhite : logo} alt="Karakoram Logo" />
                     </Link>
                 </div>
 
                 {/* Right Navigation */}
-                <ul className="right-nav hidden flex-row space-x-6 justify-end 2xl:flex xl:flex lg:flex md:flex sm:flex">
+                <ul className="right-nav hidden flex-row space-x-6 justify-end 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[19px] lg:text-[20px] xl:text-[22px] 2xl:text-[22px]">
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/shop">Shop</Link></li>
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/cart">Cart</Link></li>
                     <li ref={searchButtonRef} className="nav-item cursor-pointer" id='searchButton' onClick={toggleVisibility}>Search</li>
                     {/* <li className="nav-item cursor-pointer">Search</li> */}
                 </ul>
 
-                <div className="block w-[30px] h-[30px] ml-auto mr-[30px] 2xl:hidden xl:hidden lg:hidden md:hidden sm:hidden">
+                <div className="block w-[30px] h-[30px] ml-auto 2xl:hidden xl:hidden lg:hidden md:hidden sm:hidden">
                     <img
                         ref={hamburgerButtonRef}
-                        className="w-[30px] h-auto cursor-pointer"
+                        className="w-[25px] h-auto cursor-pointer"
                         id="hamburger"
                         onClick={toggleSidebarVisibility}
                         src={hamburgerMenu}
