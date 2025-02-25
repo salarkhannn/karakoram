@@ -46,9 +46,20 @@ export default function Product () {
             {toastMessage && <Toast message={toastMessage} />}
             <Navbar />
             <div className="relative w-screen px-[2vw]">
-                <div className="product flex flex-row justify-between list-none font-['Neue']">
+                <div
+                    className="
+                    product list-none font-['Neue']
+                    flex flex-col items-center
+                    sm:flex sm:flex-row sm:justify-between
+                    "
+                >
                     {/* Left Sticky Section */}
-                    <div className="sticky top-[30%] self-start w-[25vw] max-h-[80vh] overflow-auto">
+                    <div
+                        className="
+                        hidden
+                        sm:block sm:order-1 sm:sticky top-[30%] sm:self-start sm:w-[25vw] sm:max-h-[80vh] sm:overflow-auto
+                        "
+                    >
                         <div className="pb-50 product-details flex flex-col">
                             <p className="text-[15px]">{product.collection}</p>
                             <p className="text-[15px] mb-5">{product.name}</p>
@@ -62,18 +73,13 @@ export default function Product () {
                             <p className="text-[14px] mt-5 mb-[150px]">SKU: {product.sku}</p>
                         </div>
                     </div>
-
-                    {/* Product Images (Scrollable Section) */}
-                    <div className="product-images w-[30vw]">
-                        {product.images.map((image) => (
-                            <li className="product-image list-none" key={image}>
-                                <img src={image} alt={product.name} className="product-image" />
-                            </li>
-                        ))}
-                    </div>
-
                     {/* Right Sticky Section */}
-                    <div className="sticky top-[40%] self-start w-[25vw] max-h-[80vh] mb-100 overflow-auto">
+                    <div
+                        className="
+                        hidden
+                        sm:block sm:order-3 sm:sticky sm:top-[40%] sm:self-start sm:w-[25vw] sm:max-h-[80vh] sm:mb-100 sm:overflow-auto
+                        "
+                    >
                         <div className="mb-50 product-options flex flex-col items-end">
                             <div className="items-start">
                                 <p className="text-[13px] mb-5">${product.price} USD</p>
@@ -100,6 +106,64 @@ export default function Product () {
                             </div>
                         </div>
                     </div>
+
+                    {/* Product Images (Scrollable Section) */}
+                    <div id="Images"
+                        className="
+                        product-images w-[60vw]
+                        order-1
+                        sm:order-2
+                        "
+                    >
+                        {product.images.map((image) => (
+                            <li className="product-image list-none" key={image}>
+                                <img src={image} alt={product.name} className="product-image" />
+                            </li>
+                        ))}
+                    </div>
+                    
+                    <div className="flex flex-col order-2 w-screen px-[4vw]">
+                        <div className="flex flex-row justify-between">
+                            <p className="text-[13px]">{product.collection}</p>
+                            <p className="text-[13px] text-[#2b446e]">${product.price}</p>
+                        </div>
+                        <p className="text-[13px]">{product.name}</p>
+                        <div id="dropdownAndButton" className="mt-[12px]">
+                            <div className="size-dropdown relative cursor-pointer">
+                                <select
+                                    className="bg-transparent flex items-start cursor-pointer w-[100%] px-[5px] py-[8px] pr-[270px] text-[10px] border-[0.5px] border-gray-300 text-gray-900 font-['Neue']"
+                                    value={selectedSize || ""}
+                                    onChange={(e) => handleSizeSelect(e.target.value)}
+                                >
+                                    <option className="bg-none" value="" disabled>SELECT SIZE</option>
+                                    {["S", "M", "L"].map((size) => (
+                                        <option className="" key={size} value={size}>
+                                            {size}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <button
+                                className="mt-[7px] py-[8px] w-[100%] text-[10px] add-to-cart-button bg-black text-white cursor-pointer hover:bg-gray-900"
+                                onClick={() => handleAddToCart(product, selectedSize)}
+                            >
+                                ADD TO CART
+                            </button>
+                        </div>
+                        <div className="product-details flex flex-col mt-[10px] mb-[20px]">
+                            <p className="text-[11px]">{product.collection}</p>
+                            <p className="text-[11px] mb-5">{product.name}</p>
+                            <p className="text-[10px] mb-5">{product.description}</p>
+                            {product.qualities.map((quality) => (
+                                <li className="text-[10px]" key={quality}>- {quality}</li>
+                            ))}
+                            <p className="text-[10px] mt-5 mb-5">Supplier Color: {product.supplierColor}</p>
+                            <p className="text-[10px]">Material: {product.material}</p>
+                            <p className="text-[10px]">Made in: {product.origin}</p>
+                            <p className="text-[10px] mt-5">SKU: {product.sku}</p>
+                        </div>
+                    </div>
+
                 </div>
 
                 {/* Recommended Products Section */}

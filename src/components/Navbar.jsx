@@ -20,15 +20,23 @@ export default function Navbar() {
     
     const [searchInput, setSearchInput] = useState("");
     
-    // const isHomePage = location.pathname === "/";
-    const [isHomePage, setIsHomePage] = useState(location.pathname === "/");
+    const isHomePage = location.pathname === "/";
+    // const [isHomePage, setIsHomePage] = useState(location.pathname === "/");
+    const [navbarWhite, setNavbarWhite] = useState(isHomePage && search);
 
+
+    
+    useEffect(() => {
+        if (isHomePage) setNavbarWhite(isHomePage && search);
+        else setNavbarWhite(true);
+    }, [isHomePage, search]);    
+    
     const toggleVisibility = (event) => {
         event.stopPropagation();
+        console.log("Search Button Clicked");        
         setSearch(!search);
-        setIsHomePage(!isHomePage);
+        // setIsHomePage(navbarWhite);
     };
-
     
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -39,7 +47,11 @@ export default function Navbar() {
                 !searchButtonRef.current.contains(event.target)
             ) {
                 setSearch(false);
-                setIsHomePage(true);
+                // console.log("searchRef.current: ", searchRef.current);
+                // console.log("searchRef.current.contains: ", searchRef.current.contains);
+                // console.log("searchButtonRef.current: ", searchButtonRef.current);
+                
+                console.log("Outside Clicked")
             }
         };
         
@@ -62,6 +74,7 @@ export default function Navbar() {
                 hamburgerButtonRef.current && !hamburgerButtonRef.current.contains(event.target)
             ) {
                 setSidebar(false);
+                // console.log("Outside Clicked");
             }
         };
 
@@ -83,12 +96,13 @@ export default function Navbar() {
 
 
     return (
-        <div className={isHomePage ? "home-nav-container sticky top-0 bg-none z-50" : "nav-container sticky top-0 bg-[#fff8f7] z-50"}>
-            <nav className={isHomePage ? "text-[#fff8f7] grid grid-cols-3 items-center pt-7 px-[4vw] pb-7 sticky top-0 z-[100] w-[100vw] font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 sm:pt-9 md:pt-10 lg:pt-12 xl:pt-12 2xl:pt-12" :
+        <div className={!navbarWhite ? "home-nav-container sticky top-0 bg-none z-50" : "nav-container sticky top-0 bg-[#fff8f7] z-50"}>
+            {}
+            <nav className={!navbarWhite ? "text-[#fff8f7] grid grid-cols-3 items-center pt-7 px-[4vw] pb-7 sticky top-0 z-[100] w-[100vw] font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 sm:pt-9 md:pt-10 lg:pt-12 xl:pt-12 2xl:pt-12" :
                 "text-black grid grid-cols-3 items-center pt-7 px-[4vw] pb-7 sticky top-0 z-[100] w-[100vw] font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 sm:pt-9 md:pt-10 lg:pt-12 xl:pt-12 2xl:pt-12"}
                 >
                 {/* Left Navigation */}
-                <ul className="left-nav hidden flex-row space-x-6 justify-start left-0 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[19px] lg:text-[20px] xl:text-[22px] 2xl:text-[22px]">
+                <ul className="left-nav hidden flex-row space-x-6 justify-start left-0 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[19px] lg:text-[20px] xl:text-[18px] 2xl:text-[19px]">
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/help">Help</Link></li>
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/about">About</Link></li>
                 </ul>
@@ -99,7 +113,7 @@ export default function Navbar() {
                         className="w-[25px] h-auto cursor-pointer"
                         id="hamburger"
                         onClick={toggleSidebarVisibility}
-                        src={isHomePage ? hamburgerMenuWhite : hamburgerMenu}
+                        src={navbarWhite ? hamburgerMenu : hamburgerMenuWhite}
                         alt="Menu"
                     />
                 </div>
@@ -107,12 +121,12 @@ export default function Navbar() {
                 {/* Centered Logo */}
                 <div className="logo-container flex justify-center  2xl:justify-center xl:justify-center lg:justify-center md:justify-center sm:justify-center">
                     <Link to="/">
-                        <img className="logo flex-grow h-auto w-[140px] sm:w-[150px] md:w-[170px] lg:w-[200px] xl:w-[220px] 2xl:w-[230px]" src={isHomePage ? logoWhite : logo} alt="Karakoram Logo" />
+                        <img className="logo flex-grow h-auto w-[140px] sm:w-[150px] md:w-[170px] lg:w-[200px] xl:w-[210px] 2xl:w-[200px]" src={navbarWhite ? logo : logoWhite} alt="Karakoram Logo" />
                     </Link>
                 </div>
 
                 {/* Right Navigation */}
-                <ul className="right-nav hidden flex-row space-x-6 justify-end 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[19px] lg:text-[20px] xl:text-[22px] 2xl:text-[22px]">
+                <ul className="right-nav hidden flex-row space-x-6 justify-end 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[19px] lg:text-[20px] xl:text-[18px] 2xl:text-[19px]">
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/shop">Shop</Link></li>
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/cart">Cart</Link></li>
                     <li ref={searchButtonRef} className="nav-item cursor-pointer hover:underline" id='searchButton' onClick={toggleVisibility}>Search</li>
@@ -125,7 +139,7 @@ export default function Navbar() {
                         className="w-[25px] h-auto cursor-pointer"
                         id="searchButton"
                         onClick={toggleVisibility}
-                        src={isHomePage ? searchIconWhite : searchIcon}
+                        src={navbarWhite ? searchIcon : searchIconWhite}
                         alt="Search Icon"
                     />
                 </div>
