@@ -1,12 +1,15 @@
 import { Link, useParams } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import Navbar from "../components/Navbar";
 import hoodies from "../productData/clothes";
-import { useState } from "react";
-import { useContext } from "react";
 import { CartContext } from "../components/CartContext";
 import Toast from "../components/Toast";
 import Footer from "../components/Footer";
-import { useEffect } from "react";
+import Carousel from "react-bootstrap/Carousel";
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import './Bootstrap.module.css';
+// import ExampleCarouselImage from 'components/ExampleCarouselImage';
+
 
 export default function Product () {
     const { id } = useParams(); // get products from the URL
@@ -108,7 +111,7 @@ export default function Product () {
                     </div>
 
                     {/* Product Images (Scrollable Section) */}
-                    <div id="Images"
+                    {/* <div id="Images"
                         className="
                         product-images w-[60vw]
                         order-1
@@ -120,14 +123,37 @@ export default function Product () {
                                 <img src={image} alt={product.name} className="product-image" />
                             </li>
                         ))}
-                    </div>
+                    </div> */}
+
+                    <Carousel className="mb-[10px] block sm:hidden" data-bs-theme="dark" slide={true}>
+                        {product.images.map((image, index) => (
+                            <Carousel.Item key={index}>
+                            <div className="carousel-image-container" style={{ 
+                                height: "400px",  // Set a fixed height
+                                width: "100%",
+                                overflow: "hidden"
+                            }}>
+                                <img
+                                className="w-100"
+                                src={image}
+                                alt={product.name}
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "contain"  // This maintains aspect ratio within the container
+                                }}
+                                />
+                            </div>
+                            </Carousel.Item>
+                        ))}
+                    </Carousel>
                     
-                    <div className="flex flex-col order-2 w-screen px-[4vw]">
+                    <div className="flex flex-col order-2 w-screen px-[4vw] mt-[0px]">
                         <div className="flex flex-row justify-between">
-                            <p className="text-[13px]">{product.collection}</p>
-                            <p className="text-[13px] text-[#2b446e]">${product.price}</p>
+                            <p className="text-[13px] mb-0 mt-0">{product.collection}</p>
+                            <p className="text-[13px] mb-0 mt-0 text-[#2b446e]">${product.price}</p>
                         </div>
-                        <p className="text-[13px]">{product.name}</p>
+                        <p className="text-[13px] mb-0 mt-0">{product.name}</p>
                         <div id="dropdownAndButton" className="mt-[12px]">
                             <div className="size-dropdown relative cursor-pointer">
                                 <select
@@ -151,16 +177,16 @@ export default function Product () {
                             </button>
                         </div>
                         <div className="product-details flex flex-col mt-[10px] mb-[20px]">
-                            <p className="text-[11px]">{product.collection}</p>
-                            <p className="text-[11px] mb-5">{product.name}</p>
-                            <p className="text-[10px] mb-5">{product.description}</p>
+                            <p className="text-[12px] mb-0 mt-0">{product.collection}</p>
+                            <p className="text-[12px] mb-2 mt-0">{product.name}</p>
+                            <p className="text-[11px] mb-0 mt-0">{product.description}</p>
                             {product.qualities.map((quality) => (
-                                <li className="text-[10px]" key={quality}>- {quality}</li>
+                                <li className="text-[11px]" key={quality}>- {quality}</li>
                             ))}
-                            <p className="text-[10px] mt-5 mb-5">Supplier Color: {product.supplierColor}</p>
-                            <p className="text-[10px]">Material: {product.material}</p>
-                            <p className="text-[10px]">Made in: {product.origin}</p>
-                            <p className="text-[10px] mt-5">SKU: {product.sku}</p>
+                            <p className="text-[11px] mb-0 mt-2">Supplier Color: {product.supplierColor}</p>
+                            <p className="text-[11px] mb-0 mt-0">Material: {product.material}</p>
+                            <p className="text-[11px] mb-0 mt-2">Made in: {product.origin}</p>
+                            <p className="text-[11px] mb-0 mt-2">SKU: {product.sku}</p>
                         </div>
                     </div>
 
@@ -170,7 +196,10 @@ export default function Product () {
                 <div className="recommended-products pt-1">
                     <p className="font-['Neue'] text-gray-900 text-[14px]">You may also like</p>
                     <div className="products px-10 py-5">
-                        <ul className="product-list grid grid-cols-3 gap-y-30">
+                        <ul
+                            className="product-list grid grid-cols-2
+                            sm:grid-cols-3 sm:gap-y-30"
+                        >
                             {hoodies.map((product) => (
                                 <li key={product.id} className="product border border-transparent hover:border-black p-4 cursor-pointer font-['Neue']">
                                     <Link to={`/product/${product.id}`}>
