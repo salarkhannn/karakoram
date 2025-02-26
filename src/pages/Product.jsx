@@ -5,8 +5,11 @@ import hoodies from "../productData/clothes";
 import { CartContext } from "../components/CartContext";
 import Toast from "../components/Toast";
 import Footer from "../components/Footer";
-import Carousel from "react-bootstrap/Carousel";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ImageCarousel from "../components/ImageCarousel";
+import { ImageSlider } from "../components/ImageSlider";
+// import Carousel from "react-bootstrap/Carousel";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 // import './Bootstrap.module.css';
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
 
@@ -125,7 +128,7 @@ export default function Product () {
                         ))}
                     </div> */}
 
-                    <Carousel className="mb-[10px] block sm:hidden" data-bs-theme="dark" slide={true}>
+                    {/* <Carousel className="mb-[10px] block sm:hidden" data-bs-theme="dark" slide={true}>
                         {product.images.map((image, index) => (
                             <Carousel.Item key={index}>
                             <div className="carousel-image-container" style={{ 
@@ -146,8 +149,12 @@ export default function Product () {
                             </div>
                             </Carousel.Item>
                         ))}
-                    </Carousel>
-                    
+                    </Carousel> */}
+
+                    {/* <ImageCarousel product={product} /> */}
+                    <ImageSlider images={product.images} />
+
+
                     <div className="flex flex-col order-2 w-screen px-[4vw] mt-[0px]">
                         <div className="flex flex-row justify-between">
                             <p className="text-[13px] mb-0 mt-0">{product.collection}</p>
