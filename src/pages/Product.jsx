@@ -42,6 +42,7 @@ export default function Product () {
 
     // Find product with the matching id
     const product = hoodies.find(item => item.id === id);
+    const shuffledHoodies = [...hoodies].sort(() => 0.5 - Math.random()).slice(0, 6);
 
     if (!product) {
         return <h1>Product not found</h1>;
@@ -114,11 +115,14 @@ export default function Product () {
                     </div>
 
                     {/* Product Images (Scrollable Section) */}
-                    {/* <div id="Images"
+                    <div id="Images"
                         className="
-                        product-images w-[60vw]
-                        order-1
-                        sm:order-2
+                        product-images w-[60vw] hidden
+                        sm:block sm:order-2
+                        md:block md:order-2
+                        lg:block lg:order-2
+                        xl:block xl:order-2
+                        2xl:block 2xl:order-2
                         "
                     >
                         {product.images.map((image) => (
@@ -126,7 +130,7 @@ export default function Product () {
                                 <img src={image} alt={product.name} className="product-image" />
                             </li>
                         ))}
-                    </div> */}
+                    </div>
 
                     {/* <Carousel className="mb-[10px] block sm:hidden" data-bs-theme="dark" slide={true}>
                         {product.images.map((image, index) => (
@@ -154,8 +158,8 @@ export default function Product () {
                     {/* <ImageCarousel product={product} /> */}
                     <ImageSlider images={product.images} />
 
-
-                    <div className="flex flex-col order-2 w-screen px-[4vw] mt-[0px]">
+                    {/*For Mobile*/}
+                    <div className="flex flex-col order-2 w-screen px-[4vw] mt-[0px] sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
                         <div className="flex flex-row justify-between">
                             <p className="text-[13px] mb-0 mt-0">{product.collection}</p>
                             <p className="text-[13px] mb-0 mt-0 text-[#2b446e]">${product.price}</p>
@@ -200,28 +204,32 @@ export default function Product () {
                 </div>
 
                 {/* Recommended Products Section */}
-                <div className="recommended-products pt-1">
-                    <p className="font-['Neue'] text-gray-900 text-[14px]">You may also like</p>
-                    <div className="products px-10 py-5">
+                <div className="recommended-products">
+                    <p className="
+                        font-['Neue'] text-gray-900 text-[12px] px-[2vw]"
+                    >
+                        You may also like
+                    </p>
+                    <div className="products px-[2vw] py-5">
                         <ul
                             className="product-list grid grid-cols-2
                             sm:grid-cols-3 sm:gap-y-30"
                         >
-                            {hoodies.map((product) => (
-                                <li key={product.id} className="product border border-transparent hover:border-black p-4 cursor-pointer font-['Neue']">
-                                    <Link to={`/product/${product.id}`}>
-                                        <div className="image-container w-full flex justify-center">
-                                            <img src={product.images[0]} className="product-image h-auto w-[450px] object-contain" />
-                                        </div>
-                                    </Link>
-                                    <div className="flex flex-row justify-between">
-                                        <div className="flex flex-col pt-7">
-                                            <p className="product-name text-[15px]">{product.collection}</p>
-                                            <p className="product-name text-[15px]">{product.name}</p>
-                                            <p className="product-price text-[14px] text-[#2b446e]">${product.price}</p>
-                                        </div>
-                                    </div>
-                                </li>
+                            {shuffledHoodies.map((product) => (
+                            <li key={product.id} className="product border border-transparent hover:border-black p-4 cursor-pointer font-['Neue']">
+                                <Link to={`/product/${product.id}`}>
+                                <div className="image-container w-full flex justify-center">
+                                    <img src={product.images[0]} className="product-image h-auto w-[450px] object-contain" />
+                                </div>
+                                </Link>
+                                <div className="flex flex-row justify-between">
+                                <div className="flex flex-col pt-7">
+                                    <p className="product-name text-[11px]">{product.collection}</p>
+                                    <p className="product-name text-[11px]">{product.name}</p>
+                                    <p className="product-price text-[11px] text-[#2b446e]">${product.price}</p>
+                                </div>
+                                </div>
+                            </li>
                             ))}
                         </ul>
                     </div>

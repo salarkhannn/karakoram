@@ -16,6 +16,7 @@ export function ImageSlider({ images }) {
   return (
     <section
       aria-label="Image Slider"
+      className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden"
       style={{ width: "100%", height: "100%", position: "relative" }}
     >
       <a href="#after-image-slider-controls" className="skip-link">
