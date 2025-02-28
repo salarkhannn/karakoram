@@ -64,39 +64,45 @@ export default function Product () {
                     <div
                         className="
                         hidden
-                        sm:block sm:order-1 sm:sticky top-[30%] sm:self-start sm:w-[25vw] sm:max-h-[80vh] sm:overflow-auto
+                        sm:hidden
+                        md:hidden
+                        lg:hidden lg:order-2 lg:sticky lg:top-[30%] lg:self-start lg:w-[25vw] lg:max-h-[80vh] lg:overflow-auto
+                        xl:block xl:order-2 xl:sticky xl:top-[30%] xl:self-start xl:w-[25vw] xl:max-h-[80vh] xl:overflow-auto
                         "
                     >
                         <div className="pb-50 product-details flex flex-col">
-                            <p className="text-[15px]">{product.collection}</p>
-                            <p className="text-[15px] mb-5">{product.name}</p>
-                            <p className="text-[14px] mb-5">{product.description}</p>
+                            <p className="lg:text-[13px] xl:text-[15px] 2xl:text-[18px]">{product.collection}</p>
+                            <p className="lg:text-[13px] xl:text-[15px] 2xl:text-[18px] mb-5">{product.name}</p>
+                            <p className="lg:text-[13px] xl:text-[15px] 2xl:text-[18px] mb-5">{product.description}</p>
                             {product.qualities.map((quality) => (
-                                <li className="text-[14px]" key={quality}>- {quality}</li>
+                                <li className="lg:text-[12px] xl:text-[15px] 2xl:text-[17px]" key={quality}>- {quality}</li>
                             ))}
-                            <p className="text-[14px] mt-5 mb-5">Supplier Color: {product.supplierColor}</p>
-                            <p className="text-[14px]">Material: {product.material}</p>
-                            <p className="text-[14px]">Made in: {product.origin}</p>
-                            <p className="text-[14px] mt-5 mb-[150px]">SKU: {product.sku}</p>
+                            <p className="lg:text-[12px] xl:text-[15px] 2xl:text-[17px] mt-5 mb-5">Supplier Color: {product.supplierColor}</p>
+                            <p className="lg:text-[12px] xl:text-[15px] 2xl:text-[17px]">Material: {product.material}</p>
+                            <p className="lg:text-[12px] xl:text-[15px] 2xl:text-[17px]">Made in: {product.origin}</p>
+                            <p className="lg:text-[12px] xl:text-[15px] 2xl:text-[17px] mt-5 mb-[150px]">SKU: {product.sku}</p>
                         </div>
                     </div>
                     {/* Right Sticky Section */}
                     <div
                         className="
                         hidden
-                        sm:block sm:order-3 sm:sticky sm:top-[40%] sm:self-start sm:w-[25vw] sm:max-h-[80vh] sm:mb-100 sm:overflow-auto
+                        sm:hidden
+                        md:hidden
+                        lg:hidden
+                        xl:block xl:order-3 xl:sticky xl:top-[40%] xl:self-start xl:w-[25vw] xl:max-h-[80vh] xl:mb-100 xl:overflow-auto
                         "
                     >
                         <div className="mb-50 product-options flex flex-col items-end">
                             <div className="items-start">
-                                <p className="text-[13px] mb-5">${product.price} USD</p>
+                                <p className="xl:text-[18px] xl:mb-5 xl:ml-4">${product.price} USD</p>
                                 <div className="size-dropdown relative cursor-pointer">
                                     <select
-                                        className="mb-5 flex items-start size-select cursor-pointer px-2 py-[10px] pr-[270px] text-[13px] bg-none border-[0.5px] border-gray-300 text-gray-900 font-['Neue']"
+                                        className="xl:ml-4 mb-2 flex items-start size-select cursor-pointer xl:py-[9px] xl:pr-[220px] pl-[10px] xl:text-[12px] 2xl:text-[12px] 2xl:py-[9px] 2xl:pr-[270px] bg-none border-[0.5px] border-gray-300 text-gray-900 font-['Neue']"
                                         value={selectedSize || ""}
                                         onChange={(e) => handleSizeSelect(e.target.value)}
                                     >
-                                        <option className="font-['Neue'] text-[12px]" value="" disabled>SELECT SIZE</option>
+                                        <option className="font-['Neue'] xl:text-[12px]" value="" disabled>SELECT SIZE</option>
                                         {["S", "M", "L"].map((size) => (
                                             <option className="font-['Neue']" key={size} value={size}>
                                                 {size}
@@ -105,7 +111,7 @@ export default function Product () {
                                     </select>
                                 </div>
                                 <button
-                                    className="text-[12px] add-to-cart-button bg-black text-white px-[150px] py-[10px] cursor-pointer hover:bg-gray-900 mb-[150px]"
+                                    className="ml-4 xl:text-[12px] add-to-cart-button bg-black text-white xl:px-[130px] xl:py-[6px] 2xl:px-[150px] 2xl:py-[10px] cursor-pointer hover:bg-gray-900 mb-[150px]"
                                     onClick={() => handleAddToCart(product, selectedSize)}
                                 >
                                     ADD TO CART
@@ -117,58 +123,42 @@ export default function Product () {
                     {/* Product Images (Scrollable Section) */}
                     <div id="Images"
                         className="
-                        product-images w-[60vw] hidden
-                        sm:block sm:order-2
-                        md:block md:order-2
-                        lg:block lg:order-2
+                        product-images hidden
+                        sm:hidden sm:order-1
+                        md:hidden md:order-1
+                        lg:hidden lg:order-2 lg:w-[35vw]
                         xl:block xl:order-2
                         2xl:block 2xl:order-2
                         "
                     >
                         {product.images.map((image) => (
                             <li className="product-image list-none" key={image}>
-                                <img src={image} alt={product.name} className="product-image" />
+                                <img src={image} alt={product.name} className="product-image sm:w-[45vw]" />
                             </li>
                         ))}
                     </div>
 
-                    {/* <Carousel className="mb-[10px] block sm:hidden" data-bs-theme="dark" slide={true}>
-                        {product.images.map((image, index) => (
-                            <Carousel.Item key={index}>
-                            <div className="carousel-image-container" style={{ 
-                                height: "400px",  // Set a fixed height
-                                width: "100%",
-                                overflow: "hidden"
-                            }}>
-                                <img
-                                className="w-100"
-                                src={image}
-                                alt={product.name}
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    objectFit: "contain"  // This maintains aspect ratio within the container
-                                }}
-                                />
-                            </div>
-                            </Carousel.Item>
-                        ))}
-                    </Carousel> */}
-
                     {/* <ImageCarousel product={product} /> */}
                     <ImageSlider images={product.images} />
 
-                    {/*For Mobile*/}
-                    <div className="flex flex-col order-2 w-screen px-[4vw] mt-[0px] sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
+                    {/*For Mobile, Small, medium and large*/}
+                    <div
+                        className="flex flex-col order-2 w-screen px-[4vw] mt-[0px]
+                        sm:flex sm:w-[45vw] sm:px-0 sm:pr-[4vw]
+                        md:flex md:px-0 md:pr-[4vw]
+                        lg:flex lg:px-0 lg:pr-[4vw]
+                        xl:hidden
+                        2xl:hidden"
+                    >
                         <div className="flex flex-row justify-between">
-                            <p className="text-[13px] mb-0 mt-0">{product.collection}</p>
-                            <p className="text-[13px] mb-0 mt-0 text-[#2b446e]">${product.price}</p>
+                            <p className="text-[13px] mb-0 mt-0 sm:text-[12px] md:text-[14px]">{product.collection}</p>
+                            <p className="text-[13px] mb-0 mt-0 sm:text-[12px] md:text-[14px] text-[#2b446e]">${product.price}</p>
                         </div>
-                        <p className="text-[13px] mb-0 mt-0">{product.name}</p>
+                        <p className="text-[13px] mb-0 mt-0 sm:text-[12px] md:text-[14px]">{product.name}</p>
                         <div id="dropdownAndButton" className="mt-[12px]">
                             <div className="size-dropdown relative cursor-pointer">
                                 <select
-                                    className="bg-transparent flex items-start cursor-pointer w-[100%] px-[5px] py-[8px] pr-[270px] text-[10px] border-[0.5px] border-gray-300 text-gray-900 font-['Neue']"
+                                    className="bg-transparent flex items-start cursor-pointer w-[100%] pl-[5px] py-[8px] pr-[256px] border-[0.5px] border-gray-300 text-gray-900 font-['Neue'] text-[10px] sm:text-[9px] md:text-[11px]"
                                     value={selectedSize || ""}
                                     onChange={(e) => handleSizeSelect(e.target.value)}
                                 >
@@ -181,23 +171,23 @@ export default function Product () {
                                 </select>
                             </div>
                             <button
-                                className="mt-[7px] py-[8px] w-[100%] text-[10px] add-to-cart-button bg-black text-white cursor-pointer hover:bg-gray-900"
+                                className="mt-[7px] py-[8px] w-[100%] add-to-cart-button bg-black text-white cursor-pointer hover:bg-gray-900 text-[10px] sm:text-[9px] md:text-[11px]"
                                 onClick={() => handleAddToCart(product, selectedSize)}
                             >
                                 ADD TO CART
                             </button>
                         </div>
                         <div className="product-details flex flex-col mt-[10px] mb-[20px]">
-                            <p className="text-[12px] mb-0 mt-0">{product.collection}</p>
-                            <p className="text-[12px] mb-2 mt-0">{product.name}</p>
-                            <p className="text-[11px] mb-0 mt-0">{product.description}</p>
+                            <p className="text-[12px] mb-0 mt-0 sm:text-[10px] md:text-[13px]">{product.collection}</p>
+                            <p className="text-[12px] mb-2 mt-0 sm:text-[10px] md:text-[13px]">{product.name}</p>
+                            <p className="text-[11px] sm:text-[10px] md:text-[12px] mb-0 mt-0">{product.description}</p>
                             {product.qualities.map((quality) => (
-                                <li className="text-[11px]" key={quality}>- {quality}</li>
+                                <li className="text-[11px] sm:text-[10px] md:text-[12px]" key={quality}>- {quality}</li>
                             ))}
-                            <p className="text-[11px] mb-0 mt-2">Supplier Color: {product.supplierColor}</p>
-                            <p className="text-[11px] mb-0 mt-0">Material: {product.material}</p>
-                            <p className="text-[11px] mb-0 mt-2">Made in: {product.origin}</p>
-                            <p className="text-[11px] mb-0 mt-2">SKU: {product.sku}</p>
+                            <p className="text-[11px] sm:text-[10px] md:text-[12px] mb-0 mt-2">Supplier Color: {product.supplierColor}</p>
+                            <p className="text-[11px] sm:text-[10px] md:text-[12px] mb-0 mt-0">Material: {product.material}</p>
+                            <p className="text-[11px] sm:text-[10px] md:text-[12px] mb-0 mt-2">Made in: {product.origin}</p>
+                            <p className="text-[11px] sm:text-[10px] md:text-[12px] mb-0 mt-2">SKU: {product.sku}</p>
                         </div>
                     </div>
 
@@ -206,14 +196,25 @@ export default function Product () {
                 {/* Recommended Products Section */}
                 <div className="recommended-products">
                     <p className="
-                        font-['Neue'] text-gray-900 text-[12px] px-[2vw]"
+                        font-['Neue'] text-gray-900 text-[12px] px-[2vw]
+                        2xl:text-[25px] 2xl:px-0
+                        "
                     >
                         You may also like
                     </p>
-                    <div className="products px-[2vw] py-5">
+                    <div
+                        className="
+                        products px-[2vw] py-5
+                        2xl:px-0
+                    ">
                         <ul
                             className="product-list grid grid-cols-2
-                            sm:grid-cols-3 sm:gap-y-30"
+                            sm:grid-cols-2 sm:gap-y-30
+                            md:grid-cols-3 md:gap-y-30
+                            lg:grid-cols-3 lg:gap-y-30
+                            xl:grid-cols-3 xl:gap-y-30
+                            2xl:grid-cols-4 2xl:gap-y-30
+                            "
                         >
                             {shuffledHoodies.map((product) => (
                             <li key={product.id} className="product border border-transparent hover:border-black p-4 cursor-pointer font-['Neue']">
@@ -223,10 +224,10 @@ export default function Product () {
                                 </div>
                                 </Link>
                                 <div className="flex flex-row justify-between">
-                                <div className="flex flex-col pt-7">
-                                    <p className="product-name text-[11px]">{product.collection}</p>
-                                    <p className="product-name text-[11px]">{product.name}</p>
-                                    <p className="product-price text-[11px] text-[#2b446e]">${product.price}</p>
+                                <div className="flex flex-col pt-7 text-[11px] xl:text-[13px]">
+                                    <p className="product-name">{product.collection}</p>
+                                    <p className="product-name">{product.name}</p>
+                                    <p className="product-price text-[#2b446e]">${product.price}</p>
                                 </div>
                                 </div>
                             </li>

@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot } from "lucide-react";
+import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot, ChevronRight, ChevronLeft, Minus } from "lucide-react";
 import "./image-slider.css";
+
+
 
 export function ImageSlider({ images }) {
   const [imageIndex, setImageIndex] = useState(0);
@@ -16,7 +18,12 @@ export function ImageSlider({ images }) {
   return (
     <section
       aria-label="Image Slider"
-      className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden"
+      className="block
+      sm:block sm:w-[50vw] sm:ml-[4vw] sm:mr-[4vw]
+      md:block md:w-[40vw] md:ml-[4vw] md:mr-[4vw]
+      lg:block
+      xl:hidden
+      2xl:hidden"
       style={{ width: "100%", height: "100%", position: "relative" }}
     >
       <a href="#after-image-slider-controls" className="skip-link">
@@ -43,19 +50,19 @@ export function ImageSlider({ images }) {
       </div>
       <button
         onClick={showPrevImage}
-        className="img-slider-btn"
+        className="img-slider-btn sm:pl-[4vw] sm:pr-[4vw]"
         style={{ left: 0 }}
         aria-label="View Previous Image"
       >
-        <ArrowBigLeft aria-hidden="true" />
+        <ChevronLeft size={32} color="#000000" strokeWidth={1.25}/>
       </button>
       <button
         onClick={showNextImage}
-        className="img-slider-btn"
+        className="img-slider-btn sm:pl-[4vw] sm:pr-[4vw]"
         style={{ right: 0 }}
         aria-label="View Next Image"
       >
-        <ArrowBigRight aria-hidden="true" />
+        <ChevronRight size={32} color="#000000" strokeWidth={1.25} />
       </button>
       <div
         style={{
@@ -75,9 +82,9 @@ export function ImageSlider({ images }) {
             onClick={() => setImageIndex(index)}
           >
             {index === imageIndex ? (
-              <CircleDot aria-hidden="true" />
+              <Minus size={200} color="#000000" strokeWidth={1} style={{ transform: 'scale(1.5)'}} />
             ) : (
-              <Circle aria-hidden="true" />
+              <Minus size={200} color="#4e4e4e" strokeWidth={1} style={{ transform: 'scale(1.5)'}}/>
             )}
           </button>
         ))}

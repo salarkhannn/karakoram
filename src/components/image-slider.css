@@ -19,7 +19,6 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  padding: 1rem;
   cursor: pointer;
   transition: background-color 100ms ease-in-out;
 }
@@ -29,12 +28,6 @@
   background-color: rgb(0, 0, 0, 0.2);
 }
 
-.img-slider-btn > * {
-  stroke: white;
-  fill: black;
-  width: 2rem;
-  height: 2rem;
-}
 
 @keyframes squish {
   50% {
@@ -57,8 +50,6 @@
 }
 
 .img-slider-dot-btn > * {
-  stroke: white;
-  fill: black;
   height: 100%;
   width: 100%;
 }

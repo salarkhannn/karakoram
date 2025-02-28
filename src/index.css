@@ -2,17 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 /* @import "tailwindcss"; */
-@import url('bootstrap/dist/css/bootstrap.min.css');
-
-
-Link{
-
-}
-
-.p {
-  margin: 0;
-  padding: 0;
-}
 
 /*#region Neue */
 @font-face {

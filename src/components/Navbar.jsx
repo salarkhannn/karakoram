@@ -102,7 +102,7 @@ export default function Navbar() {
                 "text-black grid grid-cols-3 items-center pt-7 px-[4vw] pb-7 sticky top-0 z-[100] w-[100vw] font-['Neue'] font-normal 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 sm:pt-9 md:pt-10 lg:pt-12 xl:pt-12 2xl:pt-12"}
                 >
                 {/* Left Navigation */}
-                <ul className="left-nav hidden flex-row space-x-6 justify-start left-0 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[19px] lg:text-[20px] xl:text-[18px] 2xl:text-[19px]">
+                <ul className="left-nav hidden flex-row space-x-6 justify-start left-0 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[16px] lg:text-[16px] xl:text-[17px] 2xl:text-[19px]">
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/help">Help</Link></li>
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/about">About</Link></li>
                 </ul>
@@ -126,7 +126,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Right Navigation */}
-                <ul className="right-nav hidden flex-row space-x-6 justify-end 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[19px] lg:text-[20px] xl:text-[18px] 2xl:text-[19px]">
+                <ul className="right-nav hidden flex-row space-x-6 justify-end 2xl:flex xl:flex lg:flex md:flex sm:flex sm:text-[15px] md:text-[16px] lg:text-[16px] xl:text-[17px] 2xl:text-[19px]">
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/shop">Shop</Link></li>
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/cart">Cart</Link></li>
                     <li ref={searchButtonRef} className="nav-item cursor-pointer hover:underline" id='searchButton' onClick={toggleVisibility}>Search</li>
