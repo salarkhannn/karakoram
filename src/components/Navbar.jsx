@@ -169,11 +169,20 @@ export default function Navbar() {
             {/* Search Bar Overlay */}
             {search && (
                 <div ref={searchRef} className="search-container absolute top-full left-0 w-full bg-[#FFFAFA] shadow-lg border-t z-50">
-                    <form className='search-form flex items-center space-x-2 px-[4vw] py-4' onSubmit={handleSubmit}>
-                        <input onChange={handleChange} value={searchInput} type='text' name='search' placeholder='Search' className="border py-3 px-3 flex-1 mr-2" />
-                        <button className='search-button bg-black text-white px-11 py-3'>
-                            <Link to='/shop'>Search</Link>
-                        </button>
+                    <form className='search-form flex flex-row items-center w-full px-[4vw] py-4' onSubmit={handleSubmit}>
+                        <input 
+                            onChange={handleChange} 
+                            value={searchInput} 
+                            type='text' 
+                            name='search' 
+                            placeholder='Search' 
+                            className="border py-3 px-3 flex-1 mr-[1vw]" 
+                        />
+                        <Link to='/shop' className='ml-auto'>
+                            <button className='search-button bg-black text-white px-11 py-3'>
+                                Search
+                            </button>
+                        </Link>
                     </form>
                 </div>
             )}
