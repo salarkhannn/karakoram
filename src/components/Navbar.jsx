@@ -21,7 +21,6 @@ export default function Navbar() {
     const [searchInput, setSearchInput] = useState("");
     
     const isHomePage = location.pathname === "/";
-    // const [isHomePage, setIsHomePage] = useState(location.pathname === "/");
     const [navbarWhite, setNavbarWhite] = useState(isHomePage && search);
 
 
@@ -32,10 +31,8 @@ export default function Navbar() {
     }, [isHomePage, search]);    
     
     const toggleVisibility = (event) => {
-        event.stopPropagation();
-        console.log("Search Button Clicked");        
+        event.stopPropagation();    
         setSearch(!search);
-        // setIsHomePage(navbarWhite);
     };
     
     useEffect(() => {
@@ -47,11 +44,6 @@ export default function Navbar() {
                 !searchButtonRef.current.contains(event.target)
             ) {
                 setSearch(false);
-                // console.log("searchRef.current: ", searchRef.current);
-                // console.log("searchRef.current.contains: ", searchRef.current.contains);
-                // console.log("searchButtonRef.current: ", searchButtonRef.current);
-                
-                console.log("Outside Clicked")
             }
         };
         
@@ -74,7 +66,6 @@ export default function Navbar() {
                 hamburgerButtonRef.current && !hamburgerButtonRef.current.contains(event.target)
             ) {
                 setSidebar(false);
-                // console.log("Outside Clicked");
             }
         };
 
@@ -91,7 +82,6 @@ export default function Navbar() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Searched for:", searchInput);
     }
 
 
@@ -130,7 +120,6 @@ export default function Navbar() {
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/shop">Shop</Link></li>
                     <li className="nav-item xl:pr-[50px] lg:pr-[30px] md:pr-[20px] sm:pr-[10px] hover:underline"><Link to="/cart">Cart</Link></li>
                     <li ref={searchButtonRef} className="nav-item cursor-pointer hover:underline" id='searchButton' onClick={toggleVisibility}>Search</li>
-                    {/* <li className="nav-item cursor-pointer">Search</li> */}
                 </ul>
 
                 <div className="right-nav block justify-end ml-auto w-[30px] h-[30px] 2xl:hidden xl:hidden lg:hidden md:hidden sm:hidden">

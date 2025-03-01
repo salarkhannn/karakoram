@@ -2,10 +2,6 @@ import { useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 
 export default function ImageCarousel({ product }) {
-    // Import Bootstrap dynamically only once when the component mounts
-    useEffect(() => {
-        // import("bootstrap/dist/css/bootstrap.min.css");
-    }, []);
 
     return (
         <Carousel className="mb-[10px] block sm:hidden" data-bs-theme="dark" slide={true}>

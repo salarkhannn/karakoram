@@ -64,12 +64,12 @@ const originals = [
     },
 ];
 
-const hoodie1Beige = ["/shirts/hoodie1BeigeFront.png", "/shirts/hoodie1BeigeBack.png"];
-const hoodie1Black = ["/shirts/hoodie1BlackFront.png", "/shirts/hoodie1BlackBack.png"];
-const shirt1Black = ["/shirts/shirt1BlackFront.png", "/shirts/shirt1BlackBack.png"];
-const shirt1Beige = ["/shirts/shirt1BeigeFront.png", "/shirts/shirt1BeigeBack.png"];
-const shirt2Blue = ["/shirts/shirt2BlueFront.png", "/shirts/shirt2BlueBack.png"];
-const shirt2Brown = ["/shirts/shirt2BrownFront.png", "/shirts/shirt2BrownBack.png"];
+const hoodie1Beige = ["/essentials/hoodie1BeigeFront.png", "/essentials/hoodie1BeigeBack.png"];
+const hoodie1Black = ["/essentials/hoodie1BlackFront.png", "/essentials/hoodie1BlackBack.png"];
+const shirt1Black = ["/essentials/shirt1BlackFront.png", "/essentials/shirt1BlackBack.png"];
+const shirt1Beige = ["/essentials/shirt1BeigeFront.png", "/essentials/shirt1BeigeBack.png"];
+const shirt2Blue = ["/essentials/shirt2BlueFront.png", "/essentials/shirt2BlueBack.png"];
+const shirt2Brown = ["/essentials/shirt2BrownFront.png", "/essentials/shirt2BrownBack.png"];
 
 const essentials = [
     {

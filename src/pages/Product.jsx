@@ -5,13 +5,7 @@ import {originals, essentials} from "../productData/clothes";
 import { CartContext } from "../components/CartContext";
 import Toast from "../components/Toast";
 import Footer from "../components/Footer";
-import ImageCarousel from "../components/ImageCarousel";
 import { ImageSlider } from "../components/ImageSlider";
-// import Carousel from "react-bootstrap/Carousel";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import './Bootstrap.module.css';
-// import ExampleCarouselImage from 'components/ExampleCarouselImage';
 
 
 export default function Product () {

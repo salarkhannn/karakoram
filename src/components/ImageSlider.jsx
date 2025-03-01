@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot, ChevronRight, ChevronLeft, Minus } from "lucide-react";
+import { ChevronRight, ChevronLeft, Minus } from "lucide-react";
 import "./image-slider.css";
-
+import PropTypes from "prop-types";
 
 
 export function ImageSlider({ images }) {
@@ -93,3 +93,7 @@ export function ImageSlider({ images }) {
     </section>
   );
 }
+
+ImageSlider.propTypes = {
+  images: PropTypes.array.isRequired, // This validates that 'images' is required and an array
+};

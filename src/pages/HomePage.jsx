@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import bgImg from "../assets/webCover.png";
-import bgPNG from "../assets/bgPNG.png";
-import bgPNG2 from "../assets/bgPNG2.png";
 import bgPNG3 from "../assets/bgPNG3.png";
 
 export default function HomePage() {
@@ -11,7 +8,6 @@ export default function HomePage() {
             <div 
                 className="bg-img absolute inset-0 bg-cover bg-center bg-no-repeat -z-10 bg-[#fff8f7]"
                 style={{ backgroundImage: `url(${bgPNG3})` }}
-                // style={{ backgroundImage: `url(${bgImg})` }}
             ></div>
             <Navbar className=""/>
             <div className="title-container flex flex-col flex-grow justify-center items-center mt-[-172px]">
