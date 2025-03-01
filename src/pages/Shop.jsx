@@ -4,13 +4,15 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { CartContext } from "../components/CartContext";
 import { useSearch } from "../components/SearchContext";
-import hoodies from "../productData/clothes";
+import {originals, essentials} from "../productData/clothes";
 import Toast from "../components/Toast";
 
 export default function Shop() {
     const { addToCart } = useContext(CartContext);
     const { searchQuery } = useSearch();
-    const [itemsToShow, setItemsToShow] = useState(hoodies);
+    const items = originals.concat(essentials)
+
+    const [itemsToShow, setItemsToShow] = useState(items);
     
     // State for tracking dropdown visibility and selected size for each product
     const [openDropdowns, setOpenDropdowns] = useState({});
@@ -51,12 +53,12 @@ export default function Shop() {
 
     useEffect(() => {
         if (searchQuery) {
-            const filteredItems = hoodies.filter((item) =>
+            const filteredItems = items.filter((item) =>
                 item.name.toLowerCase().includes(searchQuery.toLowerCase())
             );
             setItemsToShow(filteredItems);
         } else {
-            setItemsToShow(hoodies);
+            setItemsToShow(items);
         }
     }, [searchQuery]);
 

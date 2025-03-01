@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import Navbar from "../components/Navbar";
-import hoodies from "../productData/clothes";
+import {originals, essentials} from "../productData/clothes";
 import { CartContext } from "../components/CartContext";
 import Toast from "../components/Toast";
 import Footer from "../components/Footer";
@@ -40,9 +40,11 @@ export default function Product () {
         window.scrollTo(0, 0);
     }, [id]);
 
+    const items = originals.concat(essentials);
+
     // Find product with the matching id
-    const product = hoodies.find(item => item.id === id);
-    const shuffledHoodies = [...hoodies].sort(() => 0.5 - Math.random()).slice(0, 6);
+    const product = items.find(item => item.id === id);
+    const shuffledItems = [...items].sort(() => 0.5 - Math.random()).slice(0, 6);
 
     if (!product) {
         return <h1>Product not found</h1>;
@@ -216,7 +218,7 @@ export default function Product () {
                             2xl:grid-cols-4 2xl:gap-y-30
                             "
                         >
-                            {shuffledHoodies.map((product) => (
+                            {shuffledItems.map((product) => (
                             <li key={product.id} className="product border border-transparent hover:border-black p-4 cursor-pointer font-['Neue']">
                                 <Link to={`/product/${product.id}`}>
                                 <div className="image-container w-full flex justify-center">
